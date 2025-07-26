@@ -1,0 +1,92 @@
+notebook/
+├── backend/
+│   ├── .github/                    # GitHub workflows and configurations
+│   ├── .kamal/                     # Deployment configuration for Kamal
+│   ├── app/                        # Core application logic
+│   │   ├── assets/                 # Frontend assets (if any, like images or styles)
+│   │   ├── controllers/            # Rails controllers to handle HTTP requests
+│   │   ├── helpers/                # View and controller helper methods
+│   │   ├── javascript/             # JavaScript used by Rails frontend (if using import maps or Webpacker)
+│   │   ├── jobs/                   # Background job definitions (ActiveJob)
+│   │   ├── mailers/                # Mailer classes for sending emails
+│   │   ├── models/                 # ActiveRecord models
+│   │   ├── services/               # Service objects for business logic
+│   │   └── views/                  # ERB or HTML templates
+│   ├── bin/                        # Rails and other executable scripts
+│   ├── config/                     # Application and environment configuration files
+│   ├── db/                         # Database schema, seeds, and migrations
+│   ├── lib/                        # Custom modules and reusable code
+│   ├── log/                        # Application logs
+│   ├── public/                     # Static files served by the app
+│   ├── script/                     # Custom scripts
+│   ├── spec/                       # RSpec tests
+│   ├── storage/                    # ActiveStorage files (for file uploads)
+│   ├── test/                       # Default Rails tests (if not using RSpec)
+│   ├── tmp/                        # Temporary files and caches
+│   ├── vendor/                     # Third-party code not managed by bundler
+│   ├── .dockerignore               # Docker ignore rules
+│   ├── .gitattributes              # Git attributes for merge and diff
+│   ├── .gitignore                  # Git ignored files list
+│   ├── .rspec                      # RSpec configuration
+│   ├── .rubocop.yml                # RuboCop linter configuration
+│   ├── .ruby-version               # Ruby version for the project
+│   ├── config.ru                   # Rack configuration file for server startup
+│   ├── Dockerfile                  # Docker image definition
+│   ├── Gemfile                     # Ruby gem dependencies
+│   ├── Gemfile.lock                # Gem dependency lock file
+│   ├── Rakefile                    # Rake tasks definition
+│   ├── README.md                   # Backend-specific documentation
+│   └── schema.sql                  # MySQL schema for users and notes
+│
+├── node_modules/               	# Project dependencies
+├── public/
+│   └── vite.svg                	# Public asset for Vite
+│
+├── src/
+│   ├── assets/
+│   │   └── react.svg           	# React logo asset
+│   │
+│   ├── components/
+│   │   ├── ui/            	        # UI components
+│   │   ├── app-sidebar.tsx         # App sidebar component from shadcn
+│   │   ├── login-form.tsx          # Login form component from shadcn
+│   │   ├── nav-main.tsx            # Main navigation component from shadcn
+│   │   ├── nav-projects.tsx        # Projects navigation component from shadcn
+│   │   ├── nav-user.tsx            # User navigation component from shadcn
+│   │   └── signup-form.tsx         # Sign Up form component from shadcn
+│   │
+│   ├── hooks/
+│   │   └── use-mobile.ts           # Custom hook for mobile detection
+│   │
+│   ├── lib/
+│   │   └── utils.ts            	# Utility functions
+│   │
+│   ├── pages/
+│   │   ├── Login.tsx             	# Login page
+│   │   ├── Notebook.tsx          	# Notebook page
+│   │   └── SignUp.tsx            	# Sign Up page
+│   │
+│   ├── types/
+│   │   ├── db.tsx             	    # Database types
+│   │   └── index.tsx          	    # Index types
+│   │
+│   ├── App.css                 	# Styles for App component
+│   ├── App.tsx                 	# Root component
+│   ├── index.css               	# Global styles
+│   ├── index.tsx              		# Entry point
+│   ├── main.tsx               		# Application bootstrap
+│   └── vite-env.d.ts          		# TypeScript Vite environment declarations
+│
+├── .gitignore                  	# Git ignored files list
+├── components.json             	# Component metadata (optional use)
+├── eslint.config.js           		# ESLint configuration
+├── index.html                  	# HTML entry point for Vite
+├── package-lock.json           	# Dependency lock file
+├── package.json                	# Project metadata and scripts
+├── README.md                   	# Project documentation
+├── structure.txt               	# Project structure description
+├── tsconfig.app.json           	# TS config for the app
+├── tsconfig.json               	# Root TypeScript configuration
+├── tsconfig.node.json          	# TS config for Node-specific files
+├── vite.config.ts              	# Vite configuration
+└── README.md                   	# Project documentation

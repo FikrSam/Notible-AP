@@ -27,6 +27,12 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
 
 export function AppSidebar({ notes, onAddNote, onSelectNote, ...props }: AppSidebarProps) {
   const { user } = useUser(1)
+  const [query, setQuery] = React.useState("")
+
+  const filteredNotes = notes.filter(note =>
+    note.title.toLowerCase().includes(query.toLowerCase()) ||
+    note.content?.toLowerCase().includes(query.toLowerCase())
+  )
 
   return (
     <Sidebar variant="inset" {...props}>
@@ -40,10 +46,20 @@ export function AppSidebar({ notes, onAddNote, onSelectNote, ...props }: AppSide
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Notible</span>
-                  <span className="truncate text-xs">Where you can write racist stuff</span>
+                  <span className="truncate text-xs">Organize your thoughts</span>
                 </div>
               </a>
             </SidebarMenuButton>
+          </SidebarMenuItem>
+
+          <SidebarMenuItem>
+            <input
+              type="text"
+              placeholder="Search notes..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none"
+            />
           </SidebarMenuItem>
 
           <SidebarMenuItem>
@@ -62,7 +78,7 @@ export function AppSidebar({ notes, onAddNote, onSelectNote, ...props }: AppSide
 
       <SidebarContent>
         <NavProjects
-          projects={notes.map((note) => ({
+          projects={filteredNotes.map((note) => ({
             name: note.title,
             url: "#",
             icon: NotepadText,
