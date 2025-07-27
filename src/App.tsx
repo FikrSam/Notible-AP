@@ -1,20 +1,26 @@
 // @/App.tsx
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Notebook from './pages/Notebook';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Notebook from "@/pages/Notebook";
+import { LoginForm } from "@/components/login-form";
+import { SignUpForm } from "@/components/signup-form";
+import { PrivateRoute } from "@/components/PrivateRoute";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/notebook" element={<Notebook />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route
+          path="/notebook"
+          element={
+            <PrivateRoute>
+              <Notebook />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
 }
-
-export default App;
