@@ -70,6 +70,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
                   id="email"
                   name="email"
                   type="email"
+                  placeholder="abebekebede@example.com"
                   value={form.email}
                   onChange={handleChange}
                   required
@@ -81,6 +82,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
                   id="username"
                   name="username"
                   type="text"
+                  placeholder="abebekebede"
                   value={form.username}
                   onChange={handleChange}
                   required
@@ -92,6 +94,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
                   id="password"
                   name="password"
                   type="password"
+                  placeholder="**********"
                   value={form.password}
                   onChange={handleChange}
                   required
@@ -103,6 +106,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
                   id="confirmpassword"
                   name="confirmpassword"
                   type="password"
+                  placeholder="**********"
                   value={form.confirmpassword}
                   onChange={handleChange}
                   required
