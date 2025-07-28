@@ -17,7 +17,10 @@ import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
-export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
+export function LoginForm({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   const navigate = useNavigate();
   const { authenticated } = useAuth();
   const [form, setForm] = useState({ identifier: "", password: "" });
@@ -36,11 +39,31 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     setError("");
 
     try {
-      await login(form);
-      navigate("/notebook");
+      // 1. Make the API call to log in
+      const response = await login(form);
+
+      // 2. Check the response from the server for the token
+      if (response.data.status === "success" && response.data.data.token) {
+        // 3. If successful, get the token from the response
+        const token = response.data.data.token;
+
+        // 4. Store the token in the browser's localStorage
+        localStorage.setItem("token", token);
+
+        // 5. Navigate to the protected 'notebook' route
+        navigate("/notebook");
+      } else {
+        // Handle cases where the server response is unexpected
+        setError("An unexpected error occurred during login.");
+      }
     } catch (err) {
-      setError("Invalid credentials.");
-      console.error(err);
+      // This catches errors like invalid credentials or network issues
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+        console.error(err);
+      }
     }
   };
 
@@ -81,9 +104,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                   required
                 />
               </div>
-              {error && (
-                <p className="text-sm text-red-500 -mt-2">{error}</p>
-              )}
+              {error && <p className="text-sm text-red-500 -mt-2">{error}</p>}
               <Button type="submit" className="w-full">
                 Login
               </Button>
