@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import axios from "axios";
 
 export function LoginForm({
   className,
@@ -39,26 +40,16 @@ export function LoginForm({
     setError("");
 
     try {
-      // 1. Make the API call to log in
       const response = await login(form);
-
-      // 2. Check the response from the server for the token
       if (response.data.status === "success" && response.data.data.token) {
-        // 3. If successful, get the token from the response
         const token = response.data.data.token;
-
-        // 4. Store the token in the browser's localStorage
         localStorage.setItem("token", token);
-
-        // 5. Navigate to the protected 'notebook' route
         navigate("/notebook");
       } else {
-        // Handle cases where the server response is unexpected
         setError("An unexpected error occurred during login.");
       }
     } catch (err) {
-      // This catches errors like invalid credentials or network issues
-      if (err.response && err.response.data && err.response.data.message) {
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
         setError("An unexpected error occurred. Please try again.");
