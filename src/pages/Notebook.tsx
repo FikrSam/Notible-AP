@@ -24,9 +24,7 @@ import { useNotes } from "@/hooks/useNotes";
 import { createNote, updateNote } from "@/lib/api";
 
 export default function Notebook() {
-
   const { user, loading: userLoading } = useUser();
-
   const userId = user?.id ?? null;
 
   const { notes: initialNotes, loading: notesLoading } = useNotes(
@@ -36,10 +34,7 @@ export default function Notebook() {
   const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [newTag, setNewTag] = useState("");
-
-  const selectedNote =
-    notes.find((note) => note.id === selectedNoteId) ?? notes[0];
-
+  const selectedNote = notes.find((note) => note.id === selectedNoteId) ?? null;
 
   const hasInitialized = useRef(false);
   useEffect(() => {
@@ -48,6 +43,7 @@ export default function Notebook() {
       hasInitialized.current = true;
     }
   }, [initialNotes]);
+
 
   const handleAddNote = () => {
     createNote({
@@ -76,7 +72,6 @@ export default function Notebook() {
 
     if (!currentTags.includes(newTagTrimmed)) {
       const updatedTags = [...currentTags, newTagTrimmed].join(", ");
-
       const newTitle = selectedNote.title.trim();
 
       setNotes((prev) =>
@@ -90,6 +85,13 @@ export default function Notebook() {
             : note
         )
       );
+
+      updateNote(selectedNote.id, {
+        ...selectedNote,
+        tags: updatedTags,
+      }).catch((err) => {
+        console.error("Failed to update tags:", err);
+      });
 
       setNewTag("");
     }
@@ -137,7 +139,9 @@ export default function Notebook() {
                     onClick={() => setSelectedNoteId(note.id)}
                     className="rounded-md border p-4 text-left hover:bg-muted/50 transition"
                   >
-                    <h3 className="text-lg font-semibold mb-1 truncate">{note.title || "Untitled"}</h3>
+                    <h3 className="text-lg font-semibold mb-1 truncate">
+                      {note.title || "Untitled"}
+                    </h3>
                     <p className="text-sm text-muted-foreground line-clamp-3">
                       {note.content?.slice(0, 200) || "No content..."}
                     </p>
@@ -160,8 +164,9 @@ export default function Notebook() {
                   </button>
                 ))}
               </div>
+            ) : !selectedNote ? (
+              <div className="text-muted-foreground">Note not found.</div>
             ) : (
-
               <div className="flex flex-col h-full space-y-4">
                 <Button
                   variant="ghost"
@@ -179,22 +184,21 @@ export default function Notebook() {
                       type="text"
                       value={selectedNote.title}
                       onChange={(e) => {
-                        const updatedContent = e.target.value;
+                        const updatedTitle = e.target.value;
 
                         setNotes((prev) =>
                           prev.map((note) =>
-                            note.id === selectedNote.id ? { ...note, content: updatedContent } : note
+                            note.id === selectedNote.id ? { ...note, title: updatedTitle } : note
                           )
                         );
 
                         updateNote(selectedNote.id, {
                           ...selectedNote,
-                          content: updatedContent,
+                          title: updatedTitle,
                         }).catch((err) => {
-                          console.error("Failed to update content:", err);
+                          console.error("Failed to update title:", err);
                         });
                       }}
-
                       className="text-2xl font-bold outline-none border-none bg-transparent"
                     />
                     <div className="flex flex-wrap gap-1">
@@ -229,7 +233,6 @@ export default function Notebook() {
                   </div>
                 </div>
 
-
                 <textarea
                   ref={textareaRef}
                   dir="ltr"
@@ -240,7 +243,9 @@ export default function Notebook() {
 
                     setNotes((prev) =>
                       prev.map((note) =>
-                        note.id === selectedNote.id ? { ...note, content: updatedContent } : note
+                        note.id === selectedNote.id
+                          ? { ...note, content: updatedContent }
+                          : note
                       )
                     );
 
@@ -251,7 +256,6 @@ export default function Notebook() {
                       console.error("Failed to update content:", err);
                     });
                   }}
-
                   onKeyDown={(e) => {
                     if (e.ctrlKey && e.key === "z") {
                       e.preventDefault();
@@ -269,7 +273,8 @@ export default function Notebook() {
                       const value = selectedNote.content ?? "";
                       const lines = value.split("\n");
                       const caretPos = textareaRef.current?.selectionStart ?? 0;
-                      const lineIndex = value.substring(0, caretPos).split("\n").length - 1;
+                      const lineIndex =
+                        value.substring(0, caretPos).split("\n").length - 1;
                       const currentLine = lines[lineIndex];
 
                       const match = currentLine.match(/^(\s*)([-*+]|\d+\.)\s/);
