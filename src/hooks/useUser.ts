@@ -4,25 +4,25 @@ import { useEffect, useState } from "react";
 import type { User } from "@/types";
 import { getUsername } from "@/lib/api";
 
-export function useUser(userId: number | null) {
+export function useUser() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId) return;
-
     setLoading(true);
+
     getUsername()
       .then((res) => {
         setUser(res.data);
       })
       .catch((err) => {
         console.error("Failed to load user:", err);
+        setUser(null);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [userId]);
+  }, []);
 
   return { user, loading };
 }

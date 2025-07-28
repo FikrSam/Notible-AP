@@ -23,8 +23,13 @@ import { useUser } from "@/hooks/useUser";
 import { useNotes } from "@/hooks/useNotes";
 
 export default function Notebook() {
-  const { user, loading: userLoading } = useUser(1);
-  const { notes: initialNotes, loading: notesLoading } = useNotes(user?.id ?? null);
+  const { user, loading: userLoading } = useUser();
+
+  const userId = user?.id ?? null;
+
+  const { notes: initialNotes, loading: notesLoading } = useNotes(
+    userLoading || !userId ? null : userId
+  );
   const [notes, setNotes] = useState<Note[]>([]);
   const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
