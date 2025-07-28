@@ -21,8 +21,10 @@ import {
 import type { Note } from "@/types/db";
 import { useUser } from "@/hooks/useUser";
 import { useNotes } from "@/hooks/useNotes";
+import { createNote, updateNote } from "@/lib/api";
 
 export default function Notebook() {
+
   const { user, loading: userLoading } = useUser();
 
   const userId = user?.id ?? null;
@@ -48,18 +50,19 @@ export default function Notebook() {
   }, [initialNotes]);
 
   const handleAddNote = () => {
-    const newNote = {
-      id: Date.now(),
-      user_id: user?.id ?? 1,
+    createNote({
       title: "Untitled Note",
       content: "",
       tags: "",
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    };
-
-    setNotes((prev) => [newNote, ...prev]);
-    setSelectedNoteId(newNote.id);
+    })
+      .then((res) => {
+        const newNote = res.data;
+        setNotes((prev) => [newNote, ...prev]);
+        setSelectedNoteId(newNote.id);
+      })
+      .catch((err) => {
+        console.error("Failed to create note:", err);
+      });
   };
 
   const handleAddTag = () => {
@@ -175,15 +178,23 @@ export default function Notebook() {
                     <input
                       type="text"
                       value={selectedNote.title}
-                      onChange={(e) =>
+                      onChange={(e) => {
+                        const updatedContent = e.target.value;
+
                         setNotes((prev) =>
                           prev.map((note) =>
-                            note.id === selectedNote.id
-                              ? { ...note, title: e.target.value }
-                              : note
+                            note.id === selectedNote.id ? { ...note, content: updatedContent } : note
                           )
-                        )
-                      }
+                        );
+
+                        updateNote(selectedNote.id, {
+                          ...selectedNote,
+                          content: updatedContent,
+                        }).catch((err) => {
+                          console.error("Failed to update content:", err);
+                        });
+                      }}
+
                       className="text-2xl font-bold outline-none border-none bg-transparent"
                     />
                     <div className="flex flex-wrap gap-1">
@@ -224,15 +235,23 @@ export default function Notebook() {
                   dir="ltr"
                   lang="en"
                   value={selectedNote.content ?? ""}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    const updatedContent = e.target.value;
+
                     setNotes((prev) =>
                       prev.map((note) =>
-                        note.id === selectedNote.id
-                          ? { ...note, content: e.target.value }
-                          : note
+                        note.id === selectedNote.id ? { ...note, content: updatedContent } : note
                       )
-                    )
-                  }
+                    );
+
+                    updateNote(selectedNote.id, {
+                      ...selectedNote,
+                      content: updatedContent,
+                    }).catch((err) => {
+                      console.error("Failed to update content:", err);
+                    });
+                  }}
+
                   onKeyDown={(e) => {
                     if (e.ctrlKey && e.key === "z") {
                       e.preventDefault();
