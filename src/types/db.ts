@@ -1,4 +1,4 @@
-// types/db.ts
+// @/types/db.ts
 
 export type User = {
   id: number
@@ -16,4 +16,11 @@ export type Note = {
   tags: string | null
   created_at: string
   updated_at: string
+}
+
+// Add a new type for the successful API response
+export type ApiResponse<T> = {
+  status: "success" | "error"
+  message?: string
+  data: T
 }
