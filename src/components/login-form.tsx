@@ -1,9 +1,12 @@
 // @/components/login-form.tsx
 
-import axios from "axios";
+"use client";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Link from "next/link";
 import { login } from "@/lib/api";
+import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,21 +18,20 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { authenticated } = useAuth();
+
   const [form, setForm] = useState({ identifier: "", password: "" });
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (authenticated) navigate("/notebook");
-  }, [authenticated, navigate]);
+    if (authenticated) router.push("/notebook");
+  }, [authenticated, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -44,7 +46,7 @@ export function LoginForm({
       if (response.data.status === "success" && response.data.data.token) {
         const token = response.data.data.token;
         localStorage.setItem("token", token);
-        navigate("/notebook");
+        router.push("/notebook");
       } else {
         setError("An unexpected error occurred during login.");
       }
@@ -102,7 +104,7 @@ export function LoginForm({
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
-              <Link to="/signup" className="underline underline-offset-4">
+              <Link href="/auth/signup/" className="underline underline-offset-4">
                 Sign Up
               </Link>
             </div>

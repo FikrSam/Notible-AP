@@ -40,11 +40,19 @@ notebook/
 │
 ├── node_modules/               	# Project dependencies
 ├── public/
-│   └── vite.svg                	# Public asset for Vite
 │
 ├── src/
-│   ├── assets/
-│   │   └── react.svg           	# React logo asset
+│   ├── app/
+│   │   ├── auth/
+│   │   │   ├── login/              
+│   │   │   │   └── page.tsx        # Logout logic
+│   │   │   └── signup/             
+│   │   │       └── page.tsx        # Sign Up logic
+│   │   ├── notebook/
+│   │   │   └── page.tsx            # Notebook page
+│   │   ├── global.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   │
 │   ├── components/
 │   │   ├── ui/            	        # UI components
@@ -53,40 +61,31 @@ notebook/
 │   │   ├── nav-main.tsx            # Main navigation component from shadcn
 │   │   ├── nav-projects.tsx        # Projects navigation component from shadcn
 │   │   ├── nav-user.tsx            # User navigation component from shadcn
+│   │   ├── PrivateRoute.tsx        # Private route component from react-router-dom
 │   │   └── signup-form.tsx         # Sign Up form component from shadcn
 │   │
 │   ├── hooks/
+│   │   ├── use-mobile.ts           # Custom hook for mobile detection
+│   │   ├── useAuth.ts              # Custom hook for authentication
+│   │   ├── useNote.ts              # Custom hook for note data
+│   │   ├── useUser.ts              # Custom hook for user data
 │   │   └── use-mobile.ts           # Custom hook for mobile detection
 │   │
 │   ├── lib/
 │   │   └── utils.ts            	# Utility functions
 │   │
-│   ├── pages/
-│   │   ├── Login.tsx             	# Login page
-│   │   ├── Notebook.tsx          	# Notebook page
-│   │   └── SignUp.tsx            	# Sign Up page
-│   │
-│   ├── types/
-│   │   ├── db.tsx             	    # Database types
-│   │   └── index.tsx          	    # Index types
-│   │
-│   ├── App.css                 	# Styles for App component
-│   ├── App.tsx                 	# Root component
-│   ├── index.css               	# Global styles
-│   ├── index.tsx              		# Entry point
-│   ├── main.tsx               		# Application bootstrap
-│   └── vite-env.d.ts          		# TypeScript Vite environment declarations
+│   └── types/
+│       ├── db.tsx             	    # Database types
+│       └── index.tsx          	    # Index types
 │
 ├── .gitignore                  	# Git ignored files list
 ├── components.json             	# Component metadata (optional use)
 ├── eslint.config.js           		# ESLint configuration
-├── index.html                  	# HTML entry point for Vite
+├── next-env.d.ts               	# TypeScript Next environment declarations
+├── next.config.ts              	# Next.js configuration
 ├── package-lock.json           	# Dependency lock file
 ├── package.json                	# Project metadata and scripts
+├── postcss.config.js           	# PostCSS configuration
 ├── README.md                   	# Project documentation
 ├── structure.txt               	# Project structure description
-├── tsconfig.app.json           	# TS config for the app
-├── tsconfig.json               	# Root TypeScript configuration
-├── tsconfig.node.json          	# TS config for Node-specific files
-├── vite.config.ts              	# Vite configuration
-└── README.md                   	# Project documentation
+└── tsconfig.json               	# Root TypeScript configuration

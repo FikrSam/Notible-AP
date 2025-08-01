@@ -1,7 +1,9 @@
 // @/components/signup-form.tsx
 
+"use client";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { signup } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,10 +16,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
 
-export function SignUpForm({ className, ...props }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
+export function SignUpForm({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  const router = useRouter();
+
   const [form, setForm] = useState({
     email: "",
     username: "",
@@ -44,8 +49,9 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
         email: form.email,
         username: form.username,
         password: form.password,
+        password_confirmation: form.confirmpassword,
       });
-      navigate("/notebook");
+      router.push("/notebook");
     } catch (err) {
       setError("Failed to sign up.");
       console.error(err);
@@ -58,7 +64,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
         <CardHeader>
           <CardTitle>Sign Up here for an account</CardTitle>
           <CardDescription>
-            Enter your credentials below to signup
+            Enter your credentials below to sign up
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -121,7 +127,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
             </div>
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
-              <Link to="/" className="underline underline-offset-4">
+              <Link href="/auth/login/" className="underline underline-offset-4">
                 Login
               </Link>
             </div>
