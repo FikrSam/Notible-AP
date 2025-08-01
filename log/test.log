@@ -1,0 +1,1348 @@
+  [1m[35m (9.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS `notible_backend_test`[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE DATABASE `notible_backend_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE IF EXISTS `notes` CASCADE[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE `notes` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `content` text, `user_id` bigint NOT NULL, `tags` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_notes_on_user_id` (`user_id`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `password_digest` varchar(255) NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, UNIQUE INDEX `index_users_on_email` (`email`), UNIQUE INDEX `index_users_on_username` (`username`)) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci[0m
+  [1m[35m (17.0ms)[0m  [1m[35mALTER TABLE `notes` ADD CONSTRAINT `fk_rails_7f2323ad43`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20250802132343)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20250802132242);[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'test', '2025-08-02 14:08:05.837989', '2025-08-02 14:08:05.837992')[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('schema_sha1', '5b492b608914b581acca2f4b707635069d78afd9', '2025-08-02 14:08:05.841753', '2025-08-02 14:08:05.841755')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (NULL, NULL, NULL, '2025-08-02 14:14:59.152028', '2025-08-02 14:14:59.152028')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xx' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xxx' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = '' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (NULL, NULL, NULL, '2025-08-02 14:14:59.176598', '2025-08-02 14:14:59.176598')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid-email' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'flor' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'darius@ernser.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('flor', 'darius@ernser.test', '$2a$04$BrPNcfFKXeHZrB4sfb2O5.e4BK7Y2y8qcIsVfvd1kez8hoeB2DyyC', '2025-08-02 14:18:51.968123', '2025-08-02 14:18:51.968123')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'mike' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'ferdinand@roberts-nienow.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('mike', 'ferdinand@roberts-nienow.example', '$2a$04$65QbLqpTJvHnOE7DpOqIruunOQ4Zbrh1HyomzcDBSXfZYRq.ypMBS', '2025-08-02 14:18:51.980975', '2025-08-02 14:18:51.980975')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' AND `users`.`id` != 2 LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL AND `users`.`id` != 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'marvin.dicki' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'paulina_vonrueden@dickens.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('marvin.dicki', 'paulina_vonrueden@dickens.test', '$2a$04$NzPLd45VSZZfjOPKQ4UT9OgRXeEwYnfdjY0phC3VwGYUgCllgjUz6', '2025-08-02 14:18:51.999141', '2025-08-02 14:18:51.999141')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'marvin.dicki' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'paulina_vonrueden@dickens.test' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'MARVIN.DICKI' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'paulina_vonrueden@dickens.test' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'latrisha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rose@thompson-wilkinson.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('latrisha', 'rose@thompson-wilkinson.test', '$2a$04$9ePKtrMGWYVGUKTlPa5FgO5Nh3JcctDd6j8198P/FjS/76as3OTEO', '2025-08-02 14:18:52.027954', '2025-08-02 14:18:52.027954')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'latrisha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rose@thompson-wilkinson.test' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'lizette.shields' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'roxanne@jacobs.test' LIMIT 1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('lizette.shields', 'roxanne@jacobs.test', '$2a$04$8./MGcWT8CxdXO54HJ0nJuO00fSNmv2J4bc7Y4uIzARwhH6VPT3qi', '2025-08-02 14:18:52.041040', '2025-08-02 14:18:52.041040')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xx' AND `users`.`id` != 5 LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xxx' AND `users`.`id` != 5 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'clement_oconnell' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'abe.thompson@moore-ortiz.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('clement_oconnell', 'abe.thompson@moore-ortiz.test', '$2a$04$u34Oehio2.LJBZcAuT.AkuN.ttR2VVGS4WDKEoVb40ofL3mncStB2', '2025-08-02 14:18:52.054487', '2025-08-02 14:18:52.054487')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = '' AND `users`.`id` != 6 LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`id` != 6 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'jamie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'sharilyn.lebsack@lang.example' LIMIT 1[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('jamie', 'sharilyn.lebsack@lang.example', '$2a$04$LxY3XwANW/.anyatXiVBFOZSM.zSw6bXpfdCXCceQ5aJ7UYmOGquC', '2025-08-02 14:18:52.069993', '2025-08-02 14:18:52.069993')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`id` != 7 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sharri' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'javier@becker-ryan.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sharri', 'javier@becker-ryan.test', '$2a$04$98ZcVh7Qlroy3EkxZb2OoOdxaTbe4nfRtAgyhrSDmGsmfg6vkcrOq', '2025-08-02 14:18:52.080421', '2025-08-02 14:18:52.080421')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid-email' AND `users`.`id` != 8 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'stacie.kilback' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'amparo@abbott.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('stacie.kilback', 'amparo@abbott.test', '$2a$04$vXNezBPl28BTQduvpm.hGOsJEmqb6b5jnzeLDpGfZuJeW36tZXlYy', '2025-08-02 14:18:52.089497', '2025-08-02 14:18:52.089497')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'yi.ward' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'cristopher@kunde-quigley.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('yi.ward', 'cristopher@kunde-quigley.test', '$2a$04$fce9xsMWvkcdwALQk9m5/eDLRUQSnoONABeO8iJftHWnr3GD2LkQ.', '2025-08-02 14:18:52.102752', '2025-08-02 14:18:52.102752')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'shirlee' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'winnifred.ledner@mcdermott.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('shirlee', 'winnifred.ledner@mcdermott.example', '$2a$04$rxxqsRl0Z/BLI1lj0H4A4etxxjQTnF5UZX4Ca1/EyCraMpiC1.xeC', '2025-08-02 14:18:52.114898', '2025-08-02 14:18:52.114898')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'conchita' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'jamie_marks@torp.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('conchita', 'jamie_marks@torp.test', '$2a$04$3IhZFd2CtvVtjHMKnUK8AO9AxGBuO./.tZF5eiVjp/.gav6eNevdm', '2025-08-02 14:18:52.127721', '2025-08-02 14:18:52.127721')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "newuser", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'newuser' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'newuser@test.com' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('newuser', 'newuser@test.com', '$2a$04$n6KcgYdI0XAT0bed4b4EKeIitjlzxWLKxpTGEbWP75Bdoyqtn1OXC', '2025-08-02 14:18:52.198944', '2025-08-02 14:18:52.198944')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'irvin_gottlieb' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'mariam@hermiston.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('irvin_gottlieb', 'mariam@hermiston.example', '$2a$04$63mKyBCFSURwbs8Vq5IeSOhg6jyG190dilaQMP9PPLVWE.gNy6ceq', '2025-08-02 14:18:52.214167', '2025-08-02 14:18:52.214167')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "", "email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 6ms (Views: 0.3ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'emory' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'laurette.roberts@lemke.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('emory', 'laurette.roberts@lemke.example', '$2a$04$5FKUbPzdUHB2kWzteWM2c.HsBfeY3XuVGRKJs.cbNCKNjKXH/aVtm', '2025-08-02 14:18:52.238082', '2025-08-02 14:18:52.238082')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "laurette.roberts@lemke.example", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'laurette.roberts@lemke.example' OR username = 'laurette.roberts@lemke.example') LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'joellen' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'esperanza.walker@schultz.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('joellen', 'esperanza.walker@schultz.test', '$2a$04$6oR8FUx62kl9NW8jGRr/s.9o90FwBaGIGsC4ePXE26wNLqPy1pBwK', '2025-08-02 14:18:52.253108', '2025-08-02 14:18:52.253108')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "esperanza.walker@schultz.test", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'esperanza.walker@schultz.test' OR username = 'esperanza.walker@schultz.test') LIMIT 1[0m
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'graig.beer' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'xavier.nikolaus@rosenbaum-bechtelar.example' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('graig.beer', 'xavier.nikolaus@rosenbaum-bechtelar.example', '$2a$04$BqfvAa/V9dhGEFTOwvxfD.K5vBnU8EMf/vlfZQ5lfxYuvOR/iGttK', '2025-08-02 14:18:52.270740', '2025-08-02 14:18:52.270740')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'odell' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'sam_miller@schimmel.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('odell', 'sam_miller@schimmel.test', '$2a$04$xzWVfQPcyaPZuLuRcq1CT.bfOhu1ePVc54tfA00L7P9vFfnQCz0SW', '2025-08-02 14:18:52.276664', '2025-08-02 14:18:52.276664')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Repudiandae architecto saepe dolorum.', 'A asperiores esse. Iure eius alias. Voluptatem sit soluta.', 17, 'work,ideas', '2025-08-02 14:18:52.281090', '2025-08-02 14:18:52.281090')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Deleniti enim qui rerum.', 'Nemo ut natus. Qui provident repellendus. Consequatur odit amet.', 17, 'work,ideas', '2025-08-02 14:18:52.285633', '2025-08-02 14:18:52.285633')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Autem non eius esse.', 'Sed quaerat magnam. Adipisci ab dolores. Eius dolorem commodi.', 17, 'work,ideas', '2025-08-02 14:18:52.291325', '2025-08-02 14:18:52.291325')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Culpa dicta ipsam voluptatem.', 'Natus fuga quis. Voluptates dolor sint. Qui delectus natus.', 17, 'work,ideas', '2025-08-02 14:18:52.295293', '2025-08-02 14:18:52.295293')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ex et praesentium dicta.', 'Natus maxime facere. Quae excepturi dolorem. Quia et est.', 17, 'work,ideas', '2025-08-02 14:18:52.298312', '2025-08-02 14:18:52.298312')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 17 LIMIT 1[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 17[0m
+Completed 200 OK in 22ms (Views: 6.8ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'muriel.vandervort' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'asha@marks.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('muriel.vandervort', 'asha@marks.test', '$2a$04$KzGSnWfhAkwrzHIKjgoDYOpiAcyPoYul6vL4FC/M45JcUBdZK1ybm', '2025-08-02 14:18:52.333942', '2025-08-02 14:18:52.333942')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'laila_shanahan' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lane_schmitt@ferry-sauer.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('laila_shanahan', 'lane_schmitt@ferry-sauer.example', '$2a$04$cWzfhRbakDxw2WuAREy1r.C3UUCyoymLf7CIKEWC1qWWpvZNU9hHy', '2025-08-02 14:18:52.340251', '2025-08-02 14:18:52.340251')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ea pariatur est nesciunt.', 'Explicabo consequatur labore. Nesciunt ut recusandae. Ut iusto sed.', 19, 'work,ideas', '2025-08-02 14:18:52.342489', '2025-08-02 14:18:52.342489')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptas ex perferendis ea.', 'Minus iusto tenetur. Et quo quae. Minima fuga sit.', 19, 'work,ideas', '2025-08-02 14:18:52.346074', '2025-08-02 14:18:52.346074')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sunt ullam inventore et.', 'Est dolores assumenda. Quam voluptatem ut. Nulla ut amet.', 19, 'work,ideas', '2025-08-02 14:18:52.348484', '2025-08-02 14:18:52.348484')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Rerum qui ipsam qui.', 'Ut delectus et. Omnis eveniet dicta. Fugiat aliquid quo.', 19, 'work,ideas', '2025-08-02 14:18:52.350360', '2025-08-02 14:18:52.350360')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Consequatur et iusto aspernatur.', 'Pariatur consequatur cupiditate. Dignissimos aut labore. Nulla laudantium esse.', 19, 'work,ideas', '2025-08-02 14:18:52.352934', '2025-08-02 14:18:52.352934')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#index as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'annie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'ailene_lowe@huel-goyette.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('annie', 'ailene_lowe@huel-goyette.test', '$2a$04$Wmw/JUDmk9HeHTu7z8XRROzHondGrh.p.oRqIqgYCCPkVgPFrpqbS', '2025-08-02 14:18:52.368930', '2025-08-02 14:18:52.368930')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'catarina' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'eileen@nikolaus-mosciski.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('catarina', 'eileen@nikolaus-mosciski.test', '$2a$04$YIt1CgE/BEVzctKMVsR/U.Dx0sqo/pCJT3Sdgi2iyJyGFeF78Q7na', '2025-08-02 14:18:52.375409', '2025-08-02 14:18:52.375409')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Eos eaque placeat beatae.', 'Culpa distinctio in. Hic qui iure. Explicabo at illo.', 21, 'work,ideas', '2025-08-02 14:18:52.378693', '2025-08-02 14:18:52.378693')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Incidunt quibusdam dolore consequatur.', 'Harum voluptates aperiam. Nemo recusandae voluptate. Ex id hic.', 21, 'work,ideas', '2025-08-02 14:18:52.381168', '2025-08-02 14:18:52.381168')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Consequatur sed et ab.', 'Nisi explicabo quis. Eaque minus veritatis. Quasi aut est.', 21, 'work,ideas', '2025-08-02 14:18:52.383234', '2025-08-02 14:18:52.383234')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ut est repudiandae et.', 'Blanditiis nostrum possimus. Praesentium numquam non. Itaque non minus.', 21, 'work,ideas', '2025-08-02 14:18:52.385249', '2025-08-02 14:18:52.385249')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ipsam voluptas itaque magnam.', 'Amet sit dolorum. Quo quidem ea. Eveniet aliquam amet.', 21, 'work,ideas', '2025-08-02 14:18:52.389256', '2025-08-02 14:18:52.389256')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "New Note", "content" => "Some content here"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 21 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('New Note', 'Some content here', 21, NULL, '2025-08-02 14:18:52.396258', '2025-08-02 14:18:52.396258')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'clifton_volkman' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'brady@okuneva.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('clifton_volkman', 'brady@okuneva.example', '$2a$04$xIUZrpXo0uSMbMxyyQBMXeefHe3WlLgU3VUbwN6LJP6LAmGQm9Ima', '2025-08-02 14:18:52.405302', '2025-08-02 14:18:52.405302')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'loyce_greenfelder' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'morgan@mitchell-abernathy.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('loyce_greenfelder', 'morgan@mitchell-abernathy.test', '$2a$04$kQXMEPGzUZptA8dK4XdVPu3Q1gbfbt3Wjlv7fJ3jh3sOOyzGOGqFO', '2025-08-02 14:18:52.411502', '2025-08-02 14:18:52.411502')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Alias et rerum dicta.', 'In porro a. Eligendi dolore quia. Odio nemo amet.', 23, 'work,ideas', '2025-08-02 14:18:52.413730', '2025-08-02 14:18:52.413730')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sapiente et inventore soluta.', 'Sed quibusdam neque. Eligendi fugiat libero. Rerum nihil quaerat.', 23, 'work,ideas', '2025-08-02 14:18:52.417344', '2025-08-02 14:18:52.417344')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quidem delectus aut adipisci.', 'Sint delectus ad. Assumenda vero consequuntur. Dolorum tenetur officia.', 23, 'work,ideas', '2025-08-02 14:18:52.420332', '2025-08-02 14:18:52.420332')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Temporibus reiciendis et ea.', 'Enim fuga eveniet. Blanditiis est aut. Est nisi ut.', 23, 'work,ideas', '2025-08-02 14:18:52.424469', '2025-08-02 14:18:52.424469')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Qui voluptatem qui sint.', 'Quasi vero occaecati. Voluptates facere dolor. Excepturi reprehenderit voluptates.', 23, 'work,ideas', '2025-08-02 14:18:52.428967', '2025-08-02 14:18:52.428967')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "", "content" => ""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 23 LIMIT 1[0m
+Completed 422 Unprocessable Content in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'libbie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lillia.kilback@carter.example' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('libbie', 'lillia.kilback@carter.example', '$2a$04$8Iao0K8MEy76grW1ZU7mo.vvaaCMwt8MjbhnmfxMGYtu/qmFK1rJy', '2025-08-02 14:18:52.443154', '2025-08-02 14:18:52.443154')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'avery' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'isaias.erdman@roob.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('avery', 'isaias.erdman@roob.example', '$2a$04$wvyq9dvrcTkzWB2gF.2QV.eiZ4r0GnaFyc3iNMV9ykaEa/i2Uvsu.', '2025-08-02 14:18:52.448640', '2025-08-02 14:18:52.448640')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Vel suscipit nostrum aperiam.', 'Similique dolores accusantium. Ratione minus est. Minus aperiam adipisci.', 25, 'work,ideas', '2025-08-02 14:18:52.451797', '2025-08-02 14:18:52.451797')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Commodi molestiae aut dolores.', 'Eaque optio enim. Quasi totam architecto. Id rerum consequuntur.', 25, 'work,ideas', '2025-08-02 14:18:52.455297', '2025-08-02 14:18:52.455297')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Earum enim aut non.', 'Repellat quia ut. Nostrum magnam ipsum. Vel et nesciunt.', 25, 'work,ideas', '2025-08-02 14:18:52.459096', '2025-08-02 14:18:52.459096')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Minus dignissimos nisi quaerat.', 'Est exercitationem repellat. Dolor voluptatum vel. Deserunt tenetur est.', 25, 'work,ideas', '2025-08-02 14:18:52.463562', '2025-08-02 14:18:52.463562')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Necessitatibus ut suscipit est.', 'Consectetur ducimus perferendis. Eveniet rerum ratione. Repellat modi temporibus.', 25, 'work,ideas', '2025-08-02 14:18:52.466489', '2025-08-02 14:18:52.466489')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/22" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 25 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 25 AND `notes`.`id` = 22 LIMIT 1[0m
+[31mUnpermitted parameter: :id. Context: { controller: NotesController, action: update, request: #<ActionDispatch::Request:0x0000000131228e90>, params: {"title" => "Updated Title", "controller" => "notes", "action" => "update", "id" => "22"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`title` = 'Updated Title', `notes`.`updated_at` = '2025-08-02 14:18:52.471731' WHERE `notes`.`id` = 22[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`id` = 22 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sung_moen' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'brande@jones.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sung_moen', 'brande@jones.example', '$2a$04$LTNb/Lb8F7DhxIyq7QhaBeAolcpdU2PGQDkEj5t78QRjL2JUG3oz6', '2025-08-02 14:18:52.481669', '2025-08-02 14:18:52.481669')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'geoffrey' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'ward@konopelski.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('geoffrey', 'ward@konopelski.test', '$2a$04$TaFAd3I2SJYYv7zmWnSqsOa9JEwvwijrw/D9ldRtIYA7cOFVUSPKi', '2025-08-02 14:18:52.487767', '2025-08-02 14:18:52.487767')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ipsa doloremque molestiae qui.', 'Rerum nulla deserunt. Hic eum voluptatem. Molestiae officia inventore.', 27, 'work,ideas', '2025-08-02 14:18:52.490082', '2025-08-02 14:18:52.490082')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Exercitationem qui enim omnis.', 'Rem rerum unde. Iste dicta quia. Vel consequatur numquam.', 27, 'work,ideas', '2025-08-02 14:18:52.494589', '2025-08-02 14:18:52.494589')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et eius aut atque.', 'Modi quod culpa. Facere velit libero. Mollitia vitae assumenda.', 27, 'work,ideas', '2025-08-02 14:18:52.498332', '2025-08-02 14:18:52.498332')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Neque a aut eveniet.', 'Error quas rerum. Facilis assumenda et. Saepe laudantium recusandae.', 27, 'work,ideas', '2025-08-02 14:18:52.502978', '2025-08-02 14:18:52.502978')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Fugit dolores repellendus nostrum.', 'Sint ut dolorem. Impedit magni eaque. Architecto impedit consequuntur.', 27, 'work,ideas', '2025-08-02 14:18:52.506103', '2025-08-02 14:18:52.506103')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Id voluptas consectetur mollitia.', 'Consectetur et corporis. Labore ut est. Sed quaerat consequuntur.', 28, 'work,ideas', '2025-08-02 14:18:52.508497', '2025-08-02 14:18:52.508497')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/32" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "32"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 27 LIMIT 1[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 27 AND `notes`.`id` = 32 LIMIT 1[0m
+Filter chain halted as :set_note rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'freeman_connelly' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'ricky@spencer.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('freeman_connelly', 'ricky@spencer.example', '$2a$04$PQAvhfjoTSioE3yCDVGlEOcgqwG8SkpV9WVrf6rj0rCkNU1kmjJwy', '2025-08-02 14:18:52.519269', '2025-08-02 14:18:52.519269')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sandi' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'wade_wehner@erdman-ohara.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sandi', 'wade_wehner@erdman-ohara.test', '$2a$04$PtuB.eBGGMJIjTTDTn7nI.ER7U2atPMOwsD8zRpj8ApdOut7t.BzO', '2025-08-02 14:18:52.525948', '2025-08-02 14:18:52.525948')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ipsam et nobis inventore.', 'Repellendus veniam voluptatibus. Nam minima id. Laudantium expedita dolorem.', 29, 'work,ideas', '2025-08-02 14:18:52.528230', '2025-08-02 14:18:52.528230')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Labore vero veniam dolor.', 'Quis ut eligendi. Doloribus qui aut. Ipsa animi autem.', 29, 'work,ideas', '2025-08-02 14:18:52.532352', '2025-08-02 14:18:52.532352')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Nam qui repellendus occaecati.', 'Dolorem saepe illo. Blanditiis laboriosam enim. Explicabo perspiciatis quibusdam.', 29, 'work,ideas', '2025-08-02 14:18:52.535682', '2025-08-02 14:18:52.535682')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et aliquid vero amet.', 'Eos rerum error. Quae sint aliquam. Unde omnis et.', 29, 'work,ideas', '2025-08-02 14:18:52.540143', '2025-08-02 14:18:52.540143')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Impedit facilis dolores minus.', 'Vitae nostrum reiciendis. Reprehenderit at molestias. Quis illo nemo.', 29, 'work,ideas', '2025-08-02 14:18:52.544453', '2025-08-02 14:18:52.544453')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/notes/33" for 127.0.0.1 at 2025-08-02 17:18:52 +0300
+Processing by NotesController#destroy as HTML
+  Parameters: {"id" => "33"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 29 LIMIT 1[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 29 AND `notes`.`id` = 33 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Destroy (0.6ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`id` = 33[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.7ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`id` = 33 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'porfirio_tromp' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'granville@ruecker.test' LIMIT 1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('porfirio_tromp', 'granville@ruecker.test', '$2a$04$3ZsOugg6bS27/8qFrEWhNelVpg6SM4IWdvfDoGSnrVPGXuH0M5cgu', '2025-08-02 14:24:04.747814', '2025-08-02 14:24:04.747814')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'danita' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'larita@huels.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('danita', 'larita@huels.test', '$2a$04$CAodmpoJH9m6gyE.NhXms.U4EIIcE8vIWUU2lSddBdHUmXiTPgDoC', '2025-08-02 14:24:04.764251', '2025-08-02 14:24:04.764251')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' AND `users`.`id` != 32 LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL AND `users`.`id` != 32 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'eartha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rashad@conroy-mante.example' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('eartha', 'rashad@conroy-mante.example', '$2a$04$ew.wrGFmJlZ0VNKz5lMIBemmYJFrXRFRAP8/4hsvp9r/SjfBF2176', '2025-08-02 14:24:04.779852', '2025-08-02 14:24:04.779852')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'eartha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rashad@conroy-mante.example' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'EARTHA' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rashad@conroy-mante.example' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'zenia' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'berenice_jaskolski@ziemann-nienow.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('zenia', 'berenice_jaskolski@ziemann-nienow.example', '$2a$04$SMoUsu/gQ7Eb4f6wkPypbOoJgAu1CouYclNMdXnIPM0IHTaxIBYXG', '2025-08-02 14:24:04.796452', '2025-08-02 14:24:04.796452')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'zenia' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'berenice_jaskolski@ziemann-nienow.example' LIMIT 1[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'bunny.sawayn' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'thomas.orn@schmeler-bartoletti.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('bunny.sawayn', 'thomas.orn@schmeler-bartoletti.example', '$2a$04$jZqigNXj.gN.ZF2k3txR8elzcKjAmCA7LI8Hen2uT9N5yinSB6UtK', '2025-08-02 14:24:04.807284', '2025-08-02 14:24:04.807284')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xx' AND `users`.`id` != 35 LIMIT 1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xxx' AND `users`.`id` != 35 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'joesph.harris' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'shelia.weissnat@lang-bode.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('joesph.harris', 'shelia.weissnat@lang-bode.test', '$2a$04$Fxwb0VSTJqLbZuFKCMuGUeCAGw/TkgJ1ZFOl43k6OVjuXfbUNHIbO', '2025-08-02 14:24:04.820992', '2025-08-02 14:24:04.820992')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = '' AND `users`.`id` != 36 LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`id` != 36 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'gilma_pacocha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'ellen_predovic@hagenes.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('gilma_pacocha', 'ellen_predovic@hagenes.example', '$2a$04$wvTw2j4v1TuEBE5JWzhd6.Kly7FQ3CAvqQPeITyH9FO6pfeooyUUG', '2025-08-02 14:24:04.836369', '2025-08-02 14:24:04.836369')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`id` != 37 LIMIT 1[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'gerardo_hermann' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'heriberto.kirlin@murphy.example' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('gerardo_hermann', 'heriberto.kirlin@murphy.example', '$2a$04$UGgc7lbLOnOTYAltDW3uGug0SJYz4Tw7zzGJulRHwXFwOt.FpiPiu', '2025-08-02 14:24:04.848034', '2025-08-02 14:24:04.848034')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid-email' AND `users`.`id` != 38 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'hortensia.fahey' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'france@ortiz.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('hortensia.fahey', 'france@ortiz.example', '$2a$04$pF2ueaQpZ7Si2VgObw60/O5EEpRw6GHoeWrXV3u3imuqsjhbJE62O', '2025-08-02 14:24:04.857850', '2025-08-02 14:24:04.857850')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'claud' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'randall@ruecker-von.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('claud', 'randall@ruecker-von.example', '$2a$04$Ufo8Xx3wmoPTId6KziXL5eqwUdG3YKYVrYG6XW0SlYPhyAxksLfKi', '2025-08-02 14:24:04.871580', '2025-08-02 14:24:04.871580')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'lamar' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'salena.king@kutch.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('lamar', 'salena.king@kutch.test', '$2a$04$qTuFpci/lHYkPKiFwcZf/e9B5vtcgxrToRFME6eZpjqSy2boiKupW', '2025-08-02 14:24:04.882155', '2025-08-02 14:24:04.882155')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'many_terry' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'cecily@parker.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('many_terry', 'cecily@parker.example', '$2a$04$2IFaKpXXTCMyvw/sxusKsO.ubWkFvkaUs0gw/L1oW6Z86EwXS5cv.', '2025-08-02 14:24:04.895656', '2025-08-02 14:24:04.895656')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 17:24:04 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "newuser", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'newuser' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'newuser@test.com' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('newuser', 'newuser@test.com', '$2a$04$MstDYICJ/ptz1FjDBPq3geiATl17c7Ms3rc9D3zaTf7BgD/kmz.Fq', '2025-08-02 14:24:04.945843', '2025-08-02 14:24:04.945843')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'willie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'rusty@white.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('willie', 'rusty@white.example', '$2a$04$kkDAUA1NaI6.ysC6qti1AOO1or8H8hm9AvuUyB47HFfd7nrqOiDm2', '2025-08-02 14:24:04.958360', '2025-08-02 14:24:04.958360')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 17:24:04 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "", "email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 6ms (Views: 0.3ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'trinidad' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lila.medhurst@botsford.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('trinidad', 'lila.medhurst@botsford.test', '$2a$04$6Tu0n3.BIo8lRl75lnCyUu3yAM9vNDcaBWUgYsoo.o.gQat5aF7Aa', '2025-08-02 14:24:04.978603', '2025-08-02 14:24:04.978603')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 17:24:04 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "lila.medhurst@botsford.test", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'lila.medhurst@botsford.test' OR username = 'lila.medhurst@botsford.test') LIMIT 1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sydney' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'antonia.breitenberg@ankunding.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sydney', 'antonia.breitenberg@ankunding.example', '$2a$04$6ceoI4gfK6b/NT9fs045LOJHwN7c0z1tlZ6HGZu4XWvxZpoWX.jp6', '2025-08-02 14:24:04.994646', '2025-08-02 14:24:04.994646')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 17:24:04 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "antonia.breitenberg@ankunding.example", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'antonia.breitenberg@ankunding.example' OR username = 'antonia.breitenberg@ankunding.example') LIMIT 1[0m
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'oren' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'branden@doyle.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('oren', 'branden@doyle.test', '$2a$04$/gdHnQzLsMxJcP9hhRXGHOxmtQXeDF1ARGb8T613vCtEBdtap78oS', '2025-08-02 14:24:05.010149', '2025-08-02 14:24:05.010149')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'colin' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'darby.kautzer@hermann-collins.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('colin', 'darby.kautzer@hermann-collins.test', '$2a$04$TzpoGDcCMVmD5vSqeSnHM.JUYZmf3PC3kW.uTCJVym6xTJWepyIsu', '2025-08-02 14:24:05.016880', '2025-08-02 14:24:05.016880')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sed quam odit architecto.', 'Atque quia velit. Molestiae est quia. Et veritatis dolore.', 47, 'work,ideas', '2025-08-02 14:24:05.019853', '2025-08-02 14:24:05.019853')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Beatae voluptas sed excepturi.', 'Sed rerum voluptatum. Quia et repellendus. Cumque aut velit.', 47, 'work,ideas', '2025-08-02 14:24:05.023195', '2025-08-02 14:24:05.023195')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Impedit est dolorum minima.', 'Sed in quibusdam. Aut repudiandae quos. Esse possimus odio.', 47, 'work,ideas', '2025-08-02 14:24:05.026477', '2025-08-02 14:24:05.026477')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Doloremque rem quia enim.', 'In ratione aliquam. Amet est sint. Ea aliquid ut.', 47, 'work,ideas', '2025-08-02 14:24:05.030268', '2025-08-02 14:24:05.030268')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quo ut delectus impedit.', 'Consequatur maxime enim. Quae similique accusamus. Eos non quia.', 47, 'work,ideas', '2025-08-02 14:24:05.034339', '2025-08-02 14:24:05.034339')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 47 LIMIT 1[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 47[0m
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'jarred.ruecker' LIMIT 1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'denny.jacobi@will.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('jarred.ruecker', 'denny.jacobi@will.test', '$2a$04$C7LIr74bP9HLsO5fa3zuDetQdvVm8JhHAUnJi.VxA/DU4UsBuTu2S', '2025-08-02 14:24:05.055335', '2025-08-02 14:24:05.055335')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'noah_nolan' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'stephen_roberts@spinka.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('noah_nolan', 'stephen_roberts@spinka.example', '$2a$04$NrxXS/G8YlKfRlJyE0Bw4uAtMwTvn19vsBlT7hBAfmtoh9MwwsFx6', '2025-08-02 14:24:05.061409', '2025-08-02 14:24:05.061409')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quas dicta nemo consequatur.', 'Explicabo soluta est. Possimus tempora tenetur. Velit voluptatem quo.', 49, 'work,ideas', '2025-08-02 14:24:05.063623', '2025-08-02 14:24:05.063623')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Officia recusandae dolores a.', 'Est eligendi veritatis. Dicta sit ut. Perferendis fugiat cumque.', 49, 'work,ideas', '2025-08-02 14:24:05.067954', '2025-08-02 14:24:05.067954')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Dolores quisquam est molestiae.', 'Rem deleniti ut. Suscipit ducimus numquam. Officia quis sapiente.', 49, 'work,ideas', '2025-08-02 14:24:05.071605', '2025-08-02 14:24:05.071605')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Similique qui aliquam officiis.', 'Quia quibusdam molestiae. Exercitationem alias cum. Impedit qui quos.', 49, 'work,ideas', '2025-08-02 14:24:05.075994', '2025-08-02 14:24:05.075994')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Libero voluptatem nostrum eaque.', 'Voluptates aperiam itaque. Non mollitia iste. Ipsum non harum.', 49, 'work,ideas', '2025-08-02 14:24:05.078919', '2025-08-02 14:24:05.078919')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#index as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'cornelius' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'scot@graham.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('cornelius', 'scot@graham.test', '$2a$04$bMFtoU345RO0xhQ3Iz4TneqDn2cGgC5WITfWXuaBbdv5CpFx8/uO6', '2025-08-02 14:24:05.091500', '2025-08-02 14:24:05.091500')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'leon.hilpert' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'jermaine@rohan.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('leon.hilpert', 'jermaine@rohan.example', '$2a$04$tTel2DBFKQhO4xoxmlnhlezU8feMZ2luGNJH7675.p6.taaEhvueq', '2025-08-02 14:24:05.097548', '2025-08-02 14:24:05.097548')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sed placeat aliquam id.', 'Et qui quibusdam. Aspernatur eum amet. Asperiores id dolore.', 51, 'work,ideas', '2025-08-02 14:24:05.100626', '2025-08-02 14:24:05.100626')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Vitae optio consequatur sunt.', 'Quaerat sunt ut. Rerum cumque debitis. Quae adipisci quisquam.', 51, 'work,ideas', '2025-08-02 14:24:05.104399', '2025-08-02 14:24:05.104399')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Doloribus odit accusantium repellat.', 'Ad alias molestias. Praesentium et eos. Impedit veniam enim.', 51, 'work,ideas', '2025-08-02 14:24:05.108059', '2025-08-02 14:24:05.108059')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptatibus exercitationem sit molestiae.', 'Rerum minus quis. Cum quia repellat. Odio eveniet occaecati.', 51, 'work,ideas', '2025-08-02 14:24:05.111836', '2025-08-02 14:24:05.111836')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('At dolore voluptatum ad.', 'Quod modi ea. Nam beatae quas. Labore nulla accusantium.', 51, 'work,ideas', '2025-08-02 14:24:05.114748', '2025-08-02 14:24:05.114748')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "New Note", "content" => "Some content here"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 51 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('New Note', 'Some content here', 51, NULL, '2025-08-02 14:24:05.119103', '2025-08-02 14:24:05.119103')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'shaunna.mann' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'stacy@mayer-reilly.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('shaunna.mann', 'stacy@mayer-reilly.example', '$2a$04$xynhyNkkZbU.Y.yjHwD/qODiAU6gltYTgKTxHSGG6hISl6.tY3/Hy', '2025-08-02 14:24:05.128253', '2025-08-02 14:24:05.128253')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'willian.hagenes' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lester.gerhold@zboncak-wisozk.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('willian.hagenes', 'lester.gerhold@zboncak-wisozk.test', '$2a$04$B1whjvS2oSAzK4PesaPnWO.U1ZIFTe9Tqb83beQ53onLleRdwrniC', '2025-08-02 14:24:05.134341', '2025-08-02 14:24:05.134341')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Autem quam vitae saepe.', 'Officiis aut molestiae. Officia quasi incidunt. Molestiae corporis veritatis.', 53, 'work,ideas', '2025-08-02 14:24:05.136641', '2025-08-02 14:24:05.136641')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Earum totam ea nesciunt.', 'Fuga consequuntur expedita. Dolore alias vitae. Sit et doloribus.', 53, 'work,ideas', '2025-08-02 14:24:05.140306', '2025-08-02 14:24:05.140306')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptas in adipisci ea.', 'Voluptatem et assumenda. Officia ipsum quibusdam. Qui a ipsam.', 53, 'work,ideas', '2025-08-02 14:24:05.142795', '2025-08-02 14:24:05.142795')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Cum veniam sapiente maxime.', 'Alias magni quis. Aut aut possimus. Saepe nisi delectus.', 53, 'work,ideas', '2025-08-02 14:24:05.146261', '2025-08-02 14:24:05.146261')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Magnam natus ut ut.', 'Enim sit sed. Sint nihil consectetur. Rerum adipisci veniam.', 53, 'work,ideas', '2025-08-02 14:24:05.150007', '2025-08-02 14:24:05.150007')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "", "content" => ""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 53 LIMIT 1[0m
+Completed 422 Unprocessable Content in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'hilaria' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'jermaine_sipes@macgyver-bauch.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('hilaria', 'jermaine_sipes@macgyver-bauch.test', '$2a$04$gZrQnbgHRkqteAfMjWrxZ.1es2hhBr4SybUfjzIa0iNtruUxS7URe', '2025-08-02 14:24:05.165413', '2025-08-02 14:24:05.165413')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'naida.mraz' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'frieda@nolan.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('naida.mraz', 'frieda@nolan.test', '$2a$04$GuTa3pr.sJRqx1f.APp7s.Rx29nuTMCoIN9YY5/J7.oqhO2LLPZVO', '2025-08-02 14:24:05.170782', '2025-08-02 14:24:05.170782')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sunt necessitatibus sed eaque.', 'Quod sed molestiae. Ducimus et qui. Eligendi aut esse.', 55, 'work,ideas', '2025-08-02 14:24:05.173785', '2025-08-02 14:24:05.173785')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et soluta hic incidunt.', 'Sed veniam nesciunt. Aut quia dicta. Eum qui doloribus.', 55, 'work,ideas', '2025-08-02 14:24:05.176635', '2025-08-02 14:24:05.176635')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Est atque distinctio dolorem.', 'Delectus minima impedit. Est quo ut. Accusamus numquam facilis.', 55, 'work,ideas', '2025-08-02 14:24:05.180382', '2025-08-02 14:24:05.180382')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ullam voluptate quisquam qui.', 'Sunt praesentium sed. Doloremque id nihil. Est nostrum provident.', 55, 'work,ideas', '2025-08-02 14:24:05.184374', '2025-08-02 14:24:05.184374')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ad voluptas similique vero.', 'Quidem id id. Delectus cumque asperiores. Ea autem soluta.', 55, 'work,ideas', '2025-08-02 14:24:05.187866', '2025-08-02 14:24:05.187866')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/59" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "59"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 55 LIMIT 1[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 55 AND `notes`.`id` = 59 LIMIT 1[0m
+[31mUnpermitted parameter: :id. Context: { controller: NotesController, action: update, request: #<ActionDispatch::Request:0x0000000126bd0700>, params: {"title" => "Updated Title", "controller" => "notes", "action" => "update", "id" => "59"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`title` = 'Updated Title', `notes`.`updated_at` = '2025-08-02 14:24:05.193555' WHERE `notes`.`id` = 59[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`id` = 59 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'benjamin_gislason' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'daron.ryan@torp-heathcote.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('benjamin_gislason', 'daron.ryan@torp-heathcote.example', '$2a$04$S17q3ue1PoK7COAi.hGfX.1SgLYSVL.DWSdKDgzqTq0.SJxpNW54G', '2025-08-02 14:24:05.203063', '2025-08-02 14:24:05.203063')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'jena.renner' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'agripina.gleason@mraz.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('jena.renner', 'agripina.gleason@mraz.test', '$2a$04$Pz2qVot2XejJVPBAM5FTPuBWkKM.SBkLNCU/bpCu5qXBeVIwTzPDG', '2025-08-02 14:24:05.209570', '2025-08-02 14:24:05.209570')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Placeat culpa debitis temporibus.', 'Explicabo ut totam. Excepturi voluptatem amet. Necessitatibus rerum facere.', 57, 'work,ideas', '2025-08-02 14:24:05.211789', '2025-08-02 14:24:05.211789')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptate sint ipsum repudiandae.', 'Quia in officia. Quaerat eos quos. Eligendi aspernatur animi.', 57, 'work,ideas', '2025-08-02 14:24:05.215007', '2025-08-02 14:24:05.215007')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Aut a quo eum.', 'Qui et quia. Asperiores velit laborum. Autem consectetur voluptas.', 57, 'work,ideas', '2025-08-02 14:24:05.218882', '2025-08-02 14:24:05.218882')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Sint dignissimos in et.', 'Et recusandae harum. Voluptatem amet facilis. Et est temporibus.', 57, 'work,ideas', '2025-08-02 14:24:05.222625', '2025-08-02 14:24:05.222625')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Saepe expedita deserunt velit.', 'Quo ut unde. Aut sed maiores. Et est sed.', 57, 'work,ideas', '2025-08-02 14:24:05.225788', '2025-08-02 14:24:05.225788')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Libero enim velit error.', 'Maiores eum ea. Quod ut autem. Ut odit accusantium.', 58, 'work,ideas', '2025-08-02 14:24:05.228890', '2025-08-02 14:24:05.228890')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/69" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "69"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 57 LIMIT 1[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 57 AND `notes`.`id` = 69 LIMIT 1[0m
+Filter chain halted as :set_note rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'andrea.kuhlman' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'sherri_becker@hilpert.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('andrea.kuhlman', 'sherri_becker@hilpert.test', '$2a$04$FSMQcGXQABOfGPWHSsPSqejUuj/9SdFoSUO75V1bzxDPrBs1yJ2Vu', '2025-08-02 14:24:05.240535', '2025-08-02 14:24:05.240535')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'mazie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lane_hills@oconnell.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('mazie', 'lane_hills@oconnell.example', '$2a$04$OIRAkHMmhTo7sxsif/1Alum2/GTcSmKaAfSwYR7bIRf7DWSQvQeZC', '2025-08-02 14:24:05.246785', '2025-08-02 14:24:05.246785')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Omnis voluptatem qui aliquam.', 'Adipisci molestias quos. Recusandae et eligendi. Voluptates debitis sunt.', 59, 'work,ideas', '2025-08-02 14:24:05.248976', '2025-08-02 14:24:05.248976')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Veniam atque voluptatem ducimus.', 'Ut nihil dolor. Consequatur dolorem molestiae. Nisi facere qui.', 59, 'work,ideas', '2025-08-02 14:24:05.252150', '2025-08-02 14:24:05.252150')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Iusto animi ipsum quia.', 'Quisquam consequatur dolor. Quasi ex recusandae. Neque temporibus architecto.', 59, 'work,ideas', '2025-08-02 14:24:05.255608', '2025-08-02 14:24:05.255608')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Molestias atque et nisi.', 'Nostrum porro accusantium. Veniam aperiam sint. Molestias eveniet temporibus.', 59, 'work,ideas', '2025-08-02 14:24:05.259317', '2025-08-02 14:24:05.259317')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Aliquid excepturi veritatis et.', 'Beatae cupiditate aliquid. Debitis ad dolor. Atque recusandae tempore.', 59, 'work,ideas', '2025-08-02 14:24:05.262865', '2025-08-02 14:24:05.262865')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/notes/70" for 127.0.0.1 at 2025-08-02 17:24:05 +0300
+Processing by NotesController#destroy as HTML
+  Parameters: {"id" => "70"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 59 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 59 AND `notes`.`id` = 70 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Destroy (0.5ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`id` = 70[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`id` = 70 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'jesenia' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'hosea@steuber.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('jesenia', 'hosea@steuber.test', '$2a$04$q8T9WYKj591HxjblqfEP.eV3wCAeYmDoUP4VsQkmsqHVjLmVDuZz2', '2025-08-02 15:07:29.292228', '2025-08-02 15:07:29.292228')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sean_ziemann' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'renae@miller-lehner.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sean_ziemann', 'renae@miller-lehner.test', '$2a$04$Xuc7klhDEGigfON4jylUaeLKTY7Tga2PNco79Qm/y1LS4o02u54Aq', '2025-08-02 15:07:29.308641', '2025-08-02 15:07:29.308641')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' AND `users`.`id` != 62 LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` IS NULL AND `users`.`id` != 62 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'ryan_morar' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'buddy_stokes@leannon.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('ryan_morar', 'buddy_stokes@leannon.test', '$2a$04$sL4OlDSznLxwhsuIw0pan.E/EhQONkhwGpULJuYFEU7jKOjKzfITm', '2025-08-02 15:07:29.327070', '2025-08-02 15:07:29.327070')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'ryan_morar' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'buddy_stokes@leannon.test' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'RYAN_MORAR' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'buddy_stokes@leannon.test' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'michel_wunsch' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'elias_ziemann@mraz.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('michel_wunsch', 'elias_ziemann@mraz.example', '$2a$04$2rqDbDHKDoG84Bxc37qGseSNU0RfKSxnWtQ2uETPwk661rx0P5MMu', '2025-08-02 15:07:29.343316', '2025-08-02 15:07:29.343316')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'michel_wunsch' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'elias_ziemann@mraz.example' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'dana_bartell' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'seth@steuber-pouros.example' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('dana_bartell', 'seth@steuber-pouros.example', '$2a$04$FjupBcxvxB.xEp2.VgLfV..r.nQ57mV.YDZbJ7LkDkMGXDzgd5AJS', '2025-08-02 15:07:29.358773', '2025-08-02 15:07:29.358773')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xx' AND `users`.`id` != 65 LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'xxx' AND `users`.`id` != 65 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'kasha' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'alden@watsica.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('kasha', 'alden@watsica.test', '$2a$04$v1sqBfzgsg0UuhGSSLbq8.BZ20vJ7x7aH21ziakAqEYh2hDqKYV4a', '2025-08-02 15:07:29.371576', '2025-08-02 15:07:29.371576')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = '' AND `users`.`id` != 66 LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`id` != 66 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'bobbie' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'truman@stroman.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('bobbie', 'truman@stroman.example', '$2a$04$HRPwclrTzLAlPKWbuyOqge2rUk0vEd/AdAahaEsg6f.1i8bwVCXTC', '2025-08-02 15:07:29.388040', '2025-08-02 15:07:29.388040')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`id` != 67 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'susie_hackett' LIMIT 1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'daysi@pacocha.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('susie_hackett', 'daysi@pacocha.test', '$2a$04$bx4fcGrHL.MOcNR3QA19de0T1UgeSyhtpTXjCiDnfCa3JOJJK2TOa', '2025-08-02 15:07:29.398798', '2025-08-02 15:07:29.398798')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid-email' AND `users`.`id` != 68 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'patience_quitzon' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'leroy_ernser@blanda.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('patience_quitzon', 'leroy_ernser@blanda.test', '$2a$04$JPTprnpb7dRew6Cg4yGE3.B/Nsg.u1EMoU0gs61j3pLnR2Xv07Eni', '2025-08-02 15:07:29.409936', '2025-08-02 15:07:29.409936')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'tedted' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'pierre@schumm.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('tedted', 'pierre@schumm.example', '$2a$04$60MR.TWCMCVWWj10g969TuRboIdfgK5vkwiUHSgB5DgmuJv5xp4wO', '2025-08-02 15:07:29.422031', '2025-08-02 15:07:29.422031')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'brad.weissnat' LIMIT 1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'karlene.barton@ritchie.example' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('brad.weissnat', 'karlene.barton@ritchie.example', '$2a$04$0p8DHY8GopeaBoYmFkXOAe7RMbXn4yqRh61ir7pfaNJxr/J1U2y9q', '2025-08-02 15:07:29.436306', '2025-08-02 15:07:29.436306')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'sadye_fritsch' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lester.conroy@connelly.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('sadye_fritsch', 'lester.conroy@connelly.test', '$2a$04$F2n2aiEJDmrAJHBU02BQ7OJpso0r6tBneQxIg15E7aH.t4swtYsay', '2025-08-02 15:07:29.449860', '2025-08-02 15:07:29.449860')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "newuser", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'newuser' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'newuser@test.com' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('newuser', 'newuser@test.com', '$2a$04$K2EANoGmS3laxXAho6mi7Oy3w.cpioP/4cKbBQBsU5OKZO1DjFVAu', '2025-08-02 15:07:29.504527', '2025-08-02 15:07:29.504527')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 9ms (Views: 0.2ms | ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'oliver.ullrich' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'vi@romaguera.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('oliver.ullrich', 'vi@romaguera.test', '$2a$04$NzXHOVGe5339okBO8/5pruyvGxTPRL8R4jjaY/vc0duXELo5pHGcO', '2025-08-02 15:07:29.516900', '2025-08-02 15:07:29.516900')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/signup" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by AuthenticationController#signup as HTML
+  Parameters: {"username" => "", "email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = '' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'invalid' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 7ms (Views: 0.6ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'macy' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'kori@block.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('macy', 'kori@block.test', '$2a$04$dBe4CLsAZrFdP6z4Unh8PeaNPFzq2Wapqk1xtiEX7481mS4DdLMt.', '2025-08-02 15:07:29.538490', '2025-08-02 15:07:29.538490')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "kori@block.test", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'kori@block.test' OR username = 'kori@block.test') LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'zenobia' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'haywood_rolfson@howe-connelly.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('zenobia', 'haywood_rolfson@howe-connelly.example', '$2a$04$0jcIWKZAfk6b5.C7tT1FJOuFOMSuZGW/6rFVM5XeempfwmfoXa/uK', '2025-08-02 15:07:29.551855', '2025-08-02 15:07:29.551855')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/auth/login" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"identifier" => "haywood_rolfson@howe-connelly.example", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (email = 'haywood_rolfson@howe-connelly.example' OR username = 'haywood_rolfson@howe-connelly.example') LIMIT 1[0m
+Completed 401 Unauthorized in 3ms (Views: 0.4ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'donn_beer' LIMIT 1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'mervin_watsica@rutherford-purdy.test' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('donn_beer', 'mervin_watsica@rutherford-purdy.test', '$2a$04$/qCMowITOehla0ExjHNGgep0GLo40VLKsXNqElL/yCTkxy3J8wbJe', '2025-08-02 15:07:29.566020', '2025-08-02 15:07:29.566020')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'ninfa' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'janeen_bashirian@tillman-price.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('ninfa', 'janeen_bashirian@tillman-price.test', '$2a$04$kM/rTx7VzZ3/8KTvO0NUsuu4Ie4eWDFiBbNvB/Z0Zg.aOZM0DPLlK', '2025-08-02 15:07:29.573431', '2025-08-02 15:07:29.573431')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Est modi similique sapiente.', 'Sapiente nihil autem. Non eaque et. Est fugiat quisquam.', 77, 'work,ideas', '2025-08-02 15:07:29.576380', '2025-08-02 15:07:29.576380')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Est minima quis et.', 'Id explicabo dolores. Quos minima necessitatibus. Doloremque saepe eos.', 77, 'work,ideas', '2025-08-02 15:07:29.579363', '2025-08-02 15:07:29.579363')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Qui error ut praesentium.', 'Velit praesentium cumque. Tempora molestiae itaque. Voluptatum sit quo.', 77, 'work,ideas', '2025-08-02 15:07:29.582968', '2025-08-02 15:07:29.582968')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ab omnis quae soluta.', 'Suscipit neque unde. Nemo molestias id. Adipisci odit accusantium.', 77, 'work,ideas', '2025-08-02 15:07:29.586116', '2025-08-02 15:07:29.586116')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Expedita eius eligendi cupiditate.', 'Explicabo vitae alias. Est eum dolore. Consectetur possimus perferendis.', 77, 'work,ideas', '2025-08-02 15:07:29.588329', '2025-08-02 15:07:29.588329')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 77 LIMIT 1[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 77[0m
+Completed 200 OK in 11ms (Views: 4.8ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'modesto' LIMIT 1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'merrill_lesch@carter-zulauf.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('modesto', 'merrill_lesch@carter-zulauf.test', '$2a$04$npuAM7VoTES8U4qa.Y1CV.CyWfMXRsu80v0xtUSvA0yr9w93L/1.G', '2025-08-02 15:07:29.613963', '2025-08-02 15:07:29.613963')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'aubrey.hermann' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'stacey.fritsch@nienow.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('aubrey.hermann', 'stacey.fritsch@nienow.test', '$2a$04$ChprQUzkpUNApIrrHKazJu7dm1Ihhw3tRgixXl95V/hrDGl32McTy', '2025-08-02 15:07:29.619841', '2025-08-02 15:07:29.619841')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptates rerum hic et.', 'Quo alias cum. Necessitatibus laborum harum. Nulla sint minus.', 79, 'work,ideas', '2025-08-02 15:07:29.623031', '2025-08-02 15:07:29.623031')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quisquam et est culpa.', 'Libero et assumenda. At aspernatur quae. Nemo est deleniti.', 79, 'work,ideas', '2025-08-02 15:07:29.625659', '2025-08-02 15:07:29.625659')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Non voluptas eos autem.', 'Nostrum voluptatem id. Hic qui id. Quis hic atque.', 79, 'work,ideas', '2025-08-02 15:07:29.628010', '2025-08-02 15:07:29.628010')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Suscipit consequatur cum nostrum.', 'Recusandae tenetur sed. Qui dolor est. Nisi quis dolore.', 79, 'work,ideas', '2025-08-02 15:07:29.632286', '2025-08-02 15:07:29.632286')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Maxime facere vero provident.', 'Voluptate minima similique. Vel dignissimos omnis. Quia consequatur labore.', 79, 'work,ideas', '2025-08-02 15:07:29.636929', '2025-08-02 15:07:29.636929')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#index as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'hildegarde_steuber' LIMIT 1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'hubert_murray@reichel-walsh.test' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('hildegarde_steuber', 'hubert_murray@reichel-walsh.test', '$2a$04$b.23U05fLlF40ee2eVsvyeKuA8YuEr4K1KdIn.mx5FSiVPqsZqAYC', '2025-08-02 15:07:29.648425', '2025-08-02 15:07:29.648425')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'leota.hodkiewicz' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'dolores@dach-donnelly.example' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('leota.hodkiewicz', 'dolores@dach-donnelly.example', '$2a$04$Rn3DC3kfEFg0utPYsaXUTeeKJm0jPGmdvx2F1YZUNZxICwg2435/m', '2025-08-02 15:07:29.654289', '2025-08-02 15:07:29.654289')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et quia vel iure.', 'At amet et. Quidem nulla et. Est cum voluptate.', 81, 'work,ideas', '2025-08-02 15:07:29.657515', '2025-08-02 15:07:29.657515')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Eos necessitatibus quia eum.', 'Et quia magnam. Enim culpa qui. Rerum dignissimos autem.', 81, 'work,ideas', '2025-08-02 15:07:29.660188', '2025-08-02 15:07:29.660188')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et amet fugiat rerum.', 'Ut doloremque enim. Sunt esse architecto. Pariatur molestiae vel.', 81, 'work,ideas', '2025-08-02 15:07:29.663524', '2025-08-02 15:07:29.663524')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Voluptatem aut commodi eos.', 'Ipsam maiores laudantium. Maxime delectus autem. Aut saepe quae.', 81, 'work,ideas', '2025-08-02 15:07:29.668060', '2025-08-02 15:07:29.668060')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Neque magni sapiente sed.', 'Voluptatem est itaque. Quaerat dolorem animi. Voluptatum impedit sed.', 81, 'work,ideas', '2025-08-02 15:07:29.671762', '2025-08-02 15:07:29.671762')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "New Note", "content" => "Some content here"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 81 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('New Note', 'Some content here', 81, NULL, '2025-08-02 15:07:29.676587', '2025-08-02 15:07:29.676587')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'herschel_kulas' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'sixta_kohler@hessel-murazik.example' LIMIT 1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('herschel_kulas', 'sixta_kohler@hessel-murazik.example', '$2a$04$RlQhLrdQoIIAoJMZY7UrV.CSLbMuKCV9oLGPyCPD.djISKHauxEHG', '2025-08-02 15:07:29.684880', '2025-08-02 15:07:29.684880')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'crista' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'edward@gleason-keebler.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('crista', 'edward@gleason-keebler.test', '$2a$04$aBqBGcEntp/ywJ5o49yBNekZ37DYbwkOFNBPrObja.SItMjlPolAC', '2025-08-02 15:07:29.691143', '2025-08-02 15:07:29.691143')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Adipisci enim fugit deserunt.', 'Dolorum provident dolores. Ab aut est. Doloremque praesentium ab.', 83, 'work,ideas', '2025-08-02 15:07:29.693400', '2025-08-02 15:07:29.693400')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Suscipit reiciendis laudantium velit.', 'Quo autem nesciunt. Omnis voluptatem qui. Et sunt rem.', 83, 'work,ideas', '2025-08-02 15:07:29.698168', '2025-08-02 15:07:29.698168')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Veritatis molestiae magnam ad.', 'Repudiandae cumque enim. Omnis est quaerat. Iusto veniam dolorem.', 83, 'work,ideas', '2025-08-02 15:07:29.701846', '2025-08-02 15:07:29.701846')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quis aut suscipit dolorum.', 'Error maiores odio. Ipsa tenetur est. Odit aperiam ut.', 83, 'work,ideas', '2025-08-02 15:07:29.706397', '2025-08-02 15:07:29.706397')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Eos culpa voluptatem ut.', 'Quisquam doloribus maxime. Dolor illo totam. Aut itaque cum.', 83, 'work,ideas', '2025-08-02 15:07:29.709369', '2025-08-02 15:07:29.709369')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/notes" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#create as HTML
+  Parameters: {"title" => "", "content" => ""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 83 LIMIT 1[0m
+Completed 422 Unprocessable Content in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'bruno' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'cindi.schowalter@gutmann.test' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('bruno', 'cindi.schowalter@gutmann.test', '$2a$04$5DimzZaEfi9qJ1lSjYfnkOe7QmqRGrQ/5x8VIc.Kv0LP85k5TRZ/W', '2025-08-02 15:07:29.722972', '2025-08-02 15:07:29.722972')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'daron_wuckert' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'cari.frami@dickinson-bergstrom.test' LIMIT 1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('daron_wuckert', 'cari.frami@dickinson-bergstrom.test', '$2a$04$QOVsrXKd9Pw4XTBm/pIrketiCq0DlV/zVnSjhKeiap8a/vcJDsa1u', '2025-08-02 15:07:29.728380', '2025-08-02 15:07:29.728380')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Inventore nemo saepe nobis.', 'Facere eos est. Quia voluptatem alias. Iure animi odit.', 85, 'work,ideas', '2025-08-02 15:07:29.733055', '2025-08-02 15:07:29.733055')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quia qui libero recusandae.', 'Quia laborum ullam. Numquam doloribus nihil. Provident omnis modi.', 85, 'work,ideas', '2025-08-02 15:07:29.737225', '2025-08-02 15:07:29.737225')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Et consequatur veniam numquam.', 'Consequuntur sed quia. Accusantium recusandae aut. Quas eligendi consequatur.', 85, 'work,ideas', '2025-08-02 15:07:29.741221', '2025-08-02 15:07:29.741221')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quas tempora assumenda aut.', 'Ullam quo est. Quia iusto quae. Omnis corporis illo.', 85, 'work,ideas', '2025-08-02 15:07:29.744030', '2025-08-02 15:07:29.744030')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Vel cum voluptatem quo.', 'Quos veniam sed. Eum quo qui. Explicabo suscipit officiis.', 85, 'work,ideas', '2025-08-02 15:07:29.746176', '2025-08-02 15:07:29.746176')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/96" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "96"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 85 LIMIT 1[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 85 AND `notes`.`id` = 96 LIMIT 1[0m
+[31mUnpermitted parameter: :id. Context: { controller: NotesController, action: update, request: #<ActionDispatch::Request:0x0000000122071688>, params: {"title" => "Updated Title", "controller" => "notes", "action" => "update", "id" => "96"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`title` = 'Updated Title', `notes`.`updated_at` = '2025-08-02 15:07:29.751035' WHERE `notes`.`id` = 96[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`id` = 96 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'joaquin' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'aurora@mclaughlin.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('joaquin', 'aurora@mclaughlin.example', '$2a$04$8DuahNB4URHiTbM.5letS.DSQfDEgrCLqckRmVN8F0E0h.rY6M.8W', '2025-08-02 15:07:29.760817', '2025-08-02 15:07:29.760817')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'buddy' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'jenise@greenholt.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('buddy', 'jenise@greenholt.test', '$2a$04$BdZOV1e1qVJM7RvQdPGSi.vpfMhrwhDf/Ic/DWOs2M2QpQHLu3RYi', '2025-08-02 15:07:29.767096', '2025-08-02 15:07:29.767096')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Laborum modi nisi sint.', 'Aut praesentium sed. Dolorum temporibus ad. Itaque pariatur et.', 87, 'work,ideas', '2025-08-02 15:07:29.769243', '2025-08-02 15:07:29.769243')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Ut eaque non eius.', 'Iste rem totam. Repellendus eveniet sed. Doloribus non fuga.', 87, 'work,ideas', '2025-08-02 15:07:29.772484', '2025-08-02 15:07:29.772484')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Nam repudiandae corporis qui.', 'Consequatur est qui. Beatae dicta voluptas. Rerum harum ut.', 87, 'work,ideas', '2025-08-02 15:07:29.775189', '2025-08-02 15:07:29.775189')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.8ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Est laboriosam ab non.', 'Et modi itaque. Eos autem rerum. Sit voluptas occaecati.', 87, 'work,ideas', '2025-08-02 15:07:29.777241', '2025-08-02 15:07:29.777241')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quis dolorem quaerat accusamus.', 'Laboriosam in vel. Esse iusto a. Ipsa veniam nam.', 87, 'work,ideas', '2025-08-02 15:07:29.780530', '2025-08-02 15:07:29.780530')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Quae esse quia id.', 'Possimus soluta nam. Dicta doloremque dignissimos. Incidunt eveniet ab.', 88, 'work,ideas', '2025-08-02 15:07:29.784770', '2025-08-02 15:07:29.784770')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/notes/106" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#update as HTML
+  Parameters: {"title" => "Updated Title", "id" => "106"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 87 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 87 AND `notes`.`id` = 106 LIMIT 1[0m
+Filter chain halted as :set_note rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'meaghan' LIMIT 1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'sue.anderson@jacobs-skiles.example' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('meaghan', 'sue.anderson@jacobs-skiles.example', '$2a$04$DTNzaZtVtUQeAKBwMMJWruP6m1tKZZ0xMAz/iTWUMmCCXYl1RdhZO', '2025-08-02 15:07:29.798996', '2025-08-02 15:07:29.798996')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'manman' LIMIT 1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'chara@bartoletti.test' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('manman', 'chara@bartoletti.test', '$2a$04$sMQfDElCP3h6lKEg2d2xg.DjfsmD6Gp9Y5ZoB2rjEaBk.DeegqbJi', '2025-08-02 15:07:29.805229', '2025-08-02 15:07:29.805229')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Architecto laboriosam consectetur quos.', 'Neque mollitia architecto. Sint ea voluptas. In pariatur quisquam.', 89, 'work,ideas', '2025-08-02 15:07:29.807468', '2025-08-02 15:07:29.807468')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Cum at dolores ut.', 'Ut dolore dolorum. Possimus dicta ex. Omnis dicta molestias.', 89, 'work,ideas', '2025-08-02 15:07:29.810650', '2025-08-02 15:07:29.810650')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Consectetur eligendi eum eos.', 'Ut odit impedit. Voluptas vero ipsam. Voluptas ratione error.', 89, 'work,ideas', '2025-08-02 15:07:29.814370', '2025-08-02 15:07:29.814370')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (1.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Temporibus quia ea reiciendis.', 'At modi suscipit. Eius provident nisi. Nesciunt ab suscipit.', 89, 'work,ideas', '2025-08-02 15:07:29.818103', '2025-08-02 15:07:29.818103')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `tags`, `created_at`, `updated_at`) VALUES ('Provident consequatur non aperiam.', 'Maxime eius facere. Velit quidem id. Ducimus ex et.', 89, 'work,ideas', '2025-08-02 15:07:29.822531', '2025-08-02 15:07:29.822531')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/notes/107" for 127.0.0.1 at 2025-08-02 18:07:29 +0300
+Processing by NotesController#destroy as HTML
+  Parameters: {"id" => "107"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 89 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 89 AND `notes`.`id` = 107 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mNote Destroy (0.5ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`id` = 107[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mNote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`id` = 107 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
