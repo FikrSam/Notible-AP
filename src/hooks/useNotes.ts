@@ -13,14 +13,12 @@ export function useNotes(userId: number | null) {
 
     setLoading(true);
     getNotes()
-      .then((res) => {
+      .then(res => {
+        console.log("Fetched notes:", res.data);
         setNotes(res.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error("Failed to load notes:", err);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   }, [userId]);
 

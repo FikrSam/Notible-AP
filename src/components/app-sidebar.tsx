@@ -26,7 +26,7 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
 }
 
 export function AppSidebar({ notes, onAddNote, onSelectNote, ...props }: AppSidebarProps) {
-  const { user } = useUser(1)
+  const { user } = useUser();
   const [query, setQuery] = React.useState("")
 
   const filteredNotes = notes.filter(note =>
