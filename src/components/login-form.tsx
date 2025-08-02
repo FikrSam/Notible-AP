@@ -62,7 +62,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                   id="identifier"
                   name="identifier"
                   type="text"
-                  placeholder="yourname or your@email.com"
+                  placeholder="abebekebede or abebekebede@email.com"
                   value={form.identifier}
                   onChange={handleChange}
                   required
@@ -74,6 +74,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                   id="password"
                   name="password"
                   type="password"
+                  placeholder="**********"
                   value={form.password}
                   onChange={handleChange}
                   autoComplete="current-password"
