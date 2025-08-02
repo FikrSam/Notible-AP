@@ -1,37 +1,38 @@
-"use client"
-
+"use client";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
+} from "@/components/ui/sidebar";
+import { LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function NavUser({
   user,
 }: {
   user: {
-    name: string
-    email: string
-    avatar: string
-  }
+    name: string;
+    email: string;
+    avatar: string;
+  };
 }) {
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    setDialogOpen(false)
-    // TODO: Replace with real logout logic
-    console.log("Logging out...")
-  }
+    setDialogOpen(false);
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <>
@@ -59,7 +60,9 @@ export function NavUser({
           <DialogHeader>
             <DialogTitle>Log out</DialogTitle>
           </DialogHeader>
-          <p className="text-sm text-muted-foreground">Are you sure you want to log out?</p>
+          <p className="text-sm text-muted-foreground">
+            Are you sure you want to log out?
+          </p>
           <DialogFooter>
             <Button variant="secondary" onClick={() => setDialogOpen(false)}>
               Cancel
@@ -71,5 +74,5 @@ export function NavUser({
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }
