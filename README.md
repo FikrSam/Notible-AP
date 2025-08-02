@@ -1,69 +1,165 @@
-# React + TypeScript + Vite
+# Notible - Web-Based Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web-based note-taking application. The frontend is built with  **React and TypeScript** , offering a responsive and interactive UI for note creation, editing, tagging, and searching. Backend development is in progress, with the database schema already set up using MySQL.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* [Features](#features)
+* [Technologies](#technologies)
+* [How to Run](#how-to-run)
+* [Backend Setup](#backend-setup)
+* [Structure](#structure)
+* [Group Members](#group-members)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* User authentication (sign up and login)
+* Create, edit, and delete personal notes
+* Tag notes with keywords for filtering
+* Search notes by title or content
+* Responsive and modern UI with React
+* Modal-based note editor
+* Dynamic updates using React hooks and state management
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* **Frontend** : React, TypeScript, CSS Modules
+* **Backend** : *In progress*
+* **Database** : MySQL
+* **Icons** : FontAwesome
+* **Typography** : Google Fonts (Inter)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## How to Run
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/notible-app.git
+cd notible-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure you have Node.js installed, then run:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Start the React Development Server
+
+```bash
+npm start
+```
+
+This will open the app at `http://localhost:3000/` in your browser.
+
+---
+
+## Backend Setup
+
+### Database Setup
+
+1. Navigate to the backend directory and install dependencies:
+
+   ```bash
+   cd backend
+   bundle install
+   ```
+
+2. Set up the database using Rails:
+
+   ```bash
+   rails db:create
+   rails db:migrate
+   ```
+
+   Alternatively, you can import the raw SQL schema directly:
+
+   ```bash
+   mysql -u your_username -p < backend/schema.sql
+   ```
+
+3. The schema will:
+
+   * Create a database called `notible_db`
+   * Create two tables: `users` and `notes`
+   * Set up a foreign key relationship between notes and users
+
+#### `users` table:
+
+* `id`: Primary key  
+* `username`, `email`: Unique and required  
+* `password_digest`: Stores securely hashed password via `has_secure_password`  
+* `created_at`: Timestamp of registration  
+
+#### `notes` table:
+
+* `id`: Primary key  
+* `user_id`: Foreign key linked to users  
+* `title`, `content`, `tags`: Note content fields  
+* `created_at`, `updated_at`: Automatic timestamps  
+
+The schema file is located at:
+
+```
+backend/schema.sql
+```
+
+---
+
+### API Configuration
+
+The backend exposes a token-based REST API using JWT authentication.
+
+You must include the token in the `Authorization` header for protected routes:
+
+```http
+Authorization: Bearer <your_token_here>
+```
+
+API documentation is available in `api.txt`.
+
+---
+
+### Running the Backend Server
+
+From the `backend/` directory, start the Rails API server:
+
+```bash
+rails server
+```
+
+The server will run by default at:
+
+```
+http://localhost:3000/
+```
+
+## Structure
+
+```plaintext
+notible-app/
+├── backend/
+│   └── schema.sql          # MySQL schema for users and notes
+├── public/                 # Static assets and index.html
+├── src/
+│   ├── components/         # Reusable React components
+│   ├── pages/              # Page-level components (Login, Dashboard, etc.)
+│   ├── styles/             # CSS Modules and global styles
+│   ├── utils/              # Helper functions
+│   ├── App.tsx             # Root component
+│   └── index.tsx           # Entry point
+├── package.json            # Project metadata and scripts
+├── tsconfig.json           # TypeScript configuration
+├── README.md               # Project overview and setup
+└── .gitignore
+```
+
+---
+
+## Group Members
+
+* Dagim Bireda
+* Fikir Samuel
+* Kenean Alemayhu
