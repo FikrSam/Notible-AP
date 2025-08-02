@@ -10,6 +10,29 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+# --- START: New Configuration for FactoryBot and Shoulda Matchers ---
+
+# Loads FactoryBot methods for use in tests
+require 'factory_bot_rails'
+
+# This line loads the Shoulda Matchers library
+require 'shoulda/matchers'
+
+# This configures Shoulda Matchers for your models and other tests
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+# This configures FactoryBot to be used by RSpec
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
+
+# --- END: New Configuration ---
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -35,6 +58,10 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  # --- START: FactoryBot Configuration inside RSpec ---
+  config.include FactoryBot::Syntax::Methods
+  # --- END: FactoryBot Configuration ---
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
