@@ -1,7 +1,13 @@
 // @/pages/Notebook.tsx
 
+"use client";
 import { useState, useRef, useEffect } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,33 +16,34 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
+
 import type { Note } from "@/types/db";
 import { useUser } from "@/hooks/useUser";
 import { useNotes } from "@/hooks/useNotes";
-import { createNote, updateNote } from "@/lib/api";
-import { useNavigate } from "react-router-dom";
 
 export default function Notebook() {
-  const navigate = useNavigate();
   const { user, loading: userLoading } = useUser();
-  const userId = user?.id ?? null;
-
-  const { notes: initialNotes, loading: notesLoading } = useNotes(
-    userLoading || !userId ? null : userId
-  );
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const { notes: initialNotes, loading: notesLoading } = useNotes(user?.id ?? null);
   const [notes, setNotes] = useState<Note[]>([]);
   const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [newTag, setNewTag] = useState("");
-  const selectedNote = notes.find((note) => note.id === selectedNoteId) ?? null;
+
+  const selectedNote =
+    notes.find((note) => note.id === selectedNoteId) ?? notes[0];
+
 
   const hasInitialized = useRef(false);
   useEffect(() => {
@@ -47,19 +54,18 @@ export default function Notebook() {
   }, [initialNotes]);
 
   const handleAddNote = () => {
-    createNote({
+    const newNote = {
+      id: Date.now(),
+      user_id: user?.id ?? 1,
       title: "Untitled Note",
       content: "",
       tags: "",
-    })
-      .then((res) => {
-        const newNote = res.data;
-        setNotes((prev) => [newNote, ...prev]);
-        setSelectedNoteId(newNote.id);
-      })
-      .catch((err) => {
-        console.error("Failed to create note:", err);
-      });
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+
+    setNotes((prev) => [newNote, ...prev]);
+    setSelectedNoteId(newNote.id);
   };
 
   const handleAddTag = () => {
@@ -73,33 +79,30 @@ export default function Notebook() {
 
     if (!currentTags.includes(newTagTrimmed)) {
       const updatedTags = [...currentTags, newTagTrimmed].join(", ");
+
       const newTitle = selectedNote.title.trim();
 
       setNotes((prev) =>
         prev.map((note) =>
           note.id === selectedNote.id
             ? {
-                ...note,
-                tags: updatedTags,
-                title: newTitle,
-              }
+              ...note,
+              tags: updatedTags,
+              title: newTitle,
+            }
             : note
         )
       );
 
-      updateNote(selectedNote.id, {
-        ...selectedNote,
-        tags: updatedTags,
-      }).catch((err) => {
-        console.error("Failed to update tags:", err);
-      });
-
       setNewTag("");
     }
   };
-  const handleLogout = () => {
-    logout(); // This is the function from "@/lib/api"
-    navigate("/");
+
+  const handleDeleteNote = () => {
+    if (!selectedNoteId) return;
+
+    setNotes((prev) => prev.filter((note) => note.id !== selectedNoteId));
+    setSelectedNoteId(null);
   };
 
   return (
@@ -107,9 +110,9 @@ export default function Notebook() {
       <AppSidebar
         notes={notes}
         onAddNote={handleAddNote}
-        onSelectNote={(id: number) => setSelectedNoteId(id)}
-        onLogout={handleLogout} // Pass the logout function here
-      />
+        onSelectNote={(id: number) => setSelectedNoteId(id)} onLogout={function (): void {
+          throw new Error("Function not implemented.");
+        }} />
       <SidebarInset>
         <div className="flex flex-col h-screen">
           <header className="flex h-16 shrink-0 items-center gap-2">
@@ -145,9 +148,7 @@ export default function Notebook() {
                     onClick={() => setSelectedNoteId(note.id)}
                     className="rounded-md border p-4 text-left hover:bg-muted/50 transition"
                   >
-                    <h3 className="text-lg font-semibold mb-1 truncate">
-                      {note.title || "Untitled"}
-                    </h3>
+                    <h3 className="text-lg font-semibold mb-1 truncate">{note.title || "Untitled"}</h3>
                     <p className="text-sm text-muted-foreground line-clamp-3">
                       {note.content?.slice(0, 200) || "No content..."}
                     </p>
@@ -170,18 +171,53 @@ export default function Notebook() {
                   </button>
                 ))}
               </div>
-            ) : !selectedNote ? (
-              <div className="text-muted-foreground">Note not found.</div>
             ) : (
+
               <div className="flex flex-col h-full space-y-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setSelectedNoteId(null)}
-                  className="self-start text-sm text-muted-foreground hover:underline"
-                >
-                  ← Back
-                </Button>
+                <div className="flex gap-2 mb-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setSelectedNoteId(null)}
+                    className="self-start text-sm text-muted-foreground hover:underline"
+                  >
+                    ← Back
+                  </Button>
+
+                  <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+                    <DialogTrigger asChild>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        className="self-start text-sm"
+                      >
+                        Delete
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Delete Note</DialogTitle>
+                      </DialogHeader>
+                      <p className="text-sm text-muted-foreground">
+                        Are you sure you want to delete this note? This action cannot be undone.
+                      </p>
+                      <DialogFooter className="flex justify-end gap-2">
+                        <Button variant="outline" onClick={() => setShowDeleteDialog(false)}>
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          onClick={() => {
+                            handleDeleteNote();
+                            setShowDeleteDialog(false);
+                          }}
+                        >
+                          Yes, Delete
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                </div>
 
                 <div className="flex items-start justify-between flex-wrap gap-2">
                   {/* Title & Tags */}
@@ -189,24 +225,15 @@ export default function Notebook() {
                     <input
                       type="text"
                       value={selectedNote.title}
-                      onChange={(e) => {
-                        const updatedTitle = e.target.value;
-
+                      onChange={(e) =>
                         setNotes((prev) =>
                           prev.map((note) =>
                             note.id === selectedNote.id
-                              ? { ...note, title: updatedTitle }
+                              ? { ...note, title: e.target.value }
                               : note
                           )
-                        );
-
-                        updateNote(selectedNote.id, {
-                          ...selectedNote,
-                          title: updatedTitle,
-                        }).catch((err) => {
-                          console.error("Failed to update title:", err);
-                        });
-                      }}
+                        )
+                      }
                       className="text-2xl font-bold outline-none border-none bg-transparent"
                     />
                     <div className="flex flex-wrap gap-1">
@@ -241,29 +268,21 @@ export default function Notebook() {
                   </div>
                 </div>
 
+
                 <textarea
                   ref={textareaRef}
                   dir="ltr"
                   lang="en"
                   value={selectedNote.content ?? ""}
-                  onChange={(e) => {
-                    const updatedContent = e.target.value;
-
+                  onChange={(e) =>
                     setNotes((prev) =>
                       prev.map((note) =>
                         note.id === selectedNote.id
-                          ? { ...note, content: updatedContent }
+                          ? { ...note, content: e.target.value }
                           : note
                       )
-                    );
-
-                    updateNote(selectedNote.id, {
-                      ...selectedNote,
-                      content: updatedContent,
-                    }).catch((err) => {
-                      console.error("Failed to update content:", err);
-                    });
-                  }}
+                    )
+                  }
                   onKeyDown={(e) => {
                     if (e.ctrlKey && e.key === "z") {
                       e.preventDefault();
@@ -281,8 +300,7 @@ export default function Notebook() {
                       const value = selectedNote.content ?? "";
                       const lines = value.split("\n");
                       const caretPos = textareaRef.current?.selectionStart ?? 0;
-                      const lineIndex =
-                        value.substring(0, caretPos).split("\n").length - 1;
+                      const lineIndex = value.substring(0, caretPos).split("\n").length - 1;
                       const currentLine = lines[lineIndex];
 
                       const match = currentLine.match(/^(\s*)([-*+]|\d+\.)\s/);
@@ -331,7 +349,3 @@ export default function Notebook() {
     </SidebarProvider>
   );
 }
-function logout() {
-  throw new Error("Function not implemented.");
-}
-

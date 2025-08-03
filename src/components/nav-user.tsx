@@ -1,4 +1,5 @@
 // @/components/nav-user.tsx
+
 "use client";
 import {
   Dialog,
@@ -18,20 +19,20 @@ import { useState } from "react";
 
 export function NavUser({
   user,
-  onLogout, // Add the new onLogout prop
+  onLogout,
 }: {
   user: {
     name: string;
     email: string;
     avatar: string;
   };
-  onLogout: () => void; // Define the prop type
+  onLogout: () => void;
 }) {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleLogout = () => {
     setDialogOpen(false);
-    onLogout(); // Call the onLogout prop from the parent
+    onLogout();
   };
 
   return (
