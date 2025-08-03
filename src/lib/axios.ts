@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const api = axios.create({
   // Change the baseURL to point to your running Rails server
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:4000",
   withCredentials: true,
 });
 

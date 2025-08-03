@@ -2,3 +2,8 @@
 APP_PATH = File.expand_path("../config/application", __dir__)
 require_relative "../config/boot"
 require "rails/commands"
+
+# Force default port to 4000 if not specified
+if ARGV.empty? || ARGV.include?("server")
+  ARGV << "-p" << "4000" unless ARGV.any? { |arg| arg == "-p" || arg == "--port" }
+end
