@@ -22,8 +22,10 @@ import type { Note } from "@/types/db";
 import { useUser } from "@/hooks/useUser";
 import { useNotes } from "@/hooks/useNotes";
 import { createNote, updateNote } from "@/lib/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Notebook() {
+  const navigate = useNavigate();
   const { user, loading: userLoading } = useUser();
   const userId = user?.id ?? null;
 
@@ -43,7 +45,6 @@ export default function Notebook() {
       hasInitialized.current = true;
     }
   }, [initialNotes]);
-
 
   const handleAddNote = () => {
     createNote({
@@ -78,10 +79,10 @@ export default function Notebook() {
         prev.map((note) =>
           note.id === selectedNote.id
             ? {
-              ...note,
-              tags: updatedTags,
-              title: newTitle,
-            }
+                ...note,
+                tags: updatedTags,
+                title: newTitle,
+              }
             : note
         )
       );
@@ -96,6 +97,10 @@ export default function Notebook() {
       setNewTag("");
     }
   };
+  const handleLogout = () => {
+    logout(); // This is the function from "@/lib/api"
+    navigate("/");
+  };
 
   return (
     <SidebarProvider>
@@ -103,6 +108,7 @@ export default function Notebook() {
         notes={notes}
         onAddNote={handleAddNote}
         onSelectNote={(id: number) => setSelectedNoteId(id)}
+        onLogout={handleLogout} // Pass the logout function here
       />
       <SidebarInset>
         <div className="flex flex-col h-screen">
@@ -188,7 +194,9 @@ export default function Notebook() {
 
                         setNotes((prev) =>
                           prev.map((note) =>
-                            note.id === selectedNote.id ? { ...note, title: updatedTitle } : note
+                            note.id === selectedNote.id
+                              ? { ...note, title: updatedTitle }
+                              : note
                           )
                         );
 
@@ -323,3 +331,7 @@ export default function Notebook() {
     </SidebarProvider>
   );
 }
+function logout() {
+  throw new Error("Function not implemented.");
+}
+

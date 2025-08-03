@@ -1,3 +1,4 @@
+// @/components/nav-user.tsx
 "use client";
 import {
   Dialog,
@@ -13,25 +14,24 @@ import {
 } from "@/components/ui/sidebar";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function NavUser({
   user,
+  onLogout, // Add the new onLogout prop
 }: {
   user: {
     name: string;
     email: string;
     avatar: string;
   };
+  onLogout: () => void; // Define the prop type
 }) {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     setDialogOpen(false);
-    localStorage.removeItem("token");
-    navigate("/");
+    onLogout(); // Call the onLogout prop from the parent
   };
 
   return (

@@ -1,26 +1,49 @@
 // @/hooks/useNotes.ts
 
-import type { Note } from "@/types";
-import { getNotes } from "@/lib/api";
-import { useEffect, useState } from "react";
+import type { Note } from "@/types/db";
+import { fetchNotes } from "@/lib/api";
+import { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 
-export function useNotes(userId: number | null) {
+export const useNotes = (userId: number | null) => {
   const [notes, setNotes] = useState<Note[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!userId) return;
+  const refreshNotes = useCallback(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
 
     setLoading(true);
-    getNotes()
-      .then(res => {
-        console.log("Fetched notes:", res.data);
-        setNotes(res.data);
+    fetchNotes()
+      .then((response) => {
+        if (response.data.status === "success") {
+          // This is the key change: we access the notes from the nested `data` key.
+          setNotes(response.data.data);
+          setError(null);
+        } else {
+          setError(response.data.message || "Failed to fetch notes.");
+        }
       })
-      .catch(err => {
-        console.error("Failed to load notes:", err);
+      .catch((err) => {
+        if (axios.isAxiosError(err) && err.response?.status === 401) {
+          setError("Unauthorized. Please log in again.");
+          localStorage.removeItem("token");
+        } else {
+          setError("An error occurred while fetching notes.");
+        }
+        console.error(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [userId]);
 
-  return { notes, loading };
-}
+  useEffect(() => {
+    refreshNotes();
+  }, [refreshNotes]);
+
+  return { notes, loading, error, refreshNotes };
+};
