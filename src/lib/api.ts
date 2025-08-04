@@ -1,6 +1,6 @@
 // @/lib/api.ts
 
-const API_BASE = "http://10.1.40.100:3000";
+const API_BASE = "http://localhost:4000";
 
 function getAuthHeaders() {
   const token = localStorage.getItem("token");
@@ -24,16 +24,21 @@ export async function signup(data: {
   return res.json();
 }
 
-export async function login(data: {
-  identifier: string;
-  password: string;
-}) {
+export async function login(data: { identifier: string; password: string }) {
   const res = await fetch(`${API_BASE}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  return res.json();
+
+  const text = await res.text();
+  console.log("Login response:", text);
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error("Invalid JSON response");
+  }
 }
 
 export function logout() {
