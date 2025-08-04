@@ -43,8 +43,8 @@ export function LoginForm({
 
     try {
       const response = await login(form);
-      if (response.data.status === "success" && response.data.data.token) {
-        const token = response.data.data.token;
+      if (response.status === "success" && response.data?.token) {
+        const token = response.data.token;
         localStorage.setItem("token", token);
         router.push("/notebook");
       } else {

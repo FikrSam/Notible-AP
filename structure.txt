@@ -8,6 +8,9 @@ notebook/
 │   │   ├── helpers/                # View and controller helper methods
 │   │   ├── javascript/             # JavaScript used by Rails frontend (if using import maps or Webpacker)
 │   │   ├── jobs/                   # Background job definitions (ActiveJob)
+│   │   ├── lib/                    # Custom modules and reusable code
+│   │   │   ├── exception_handler.rb
+│   │   │   └── json_web_token.rb   
 │   │   ├── mailers/                # Mailer classes for sending emails
 │   │   ├── models/                 # ActiveRecord models
 │   │   ├── services/               # Service objects for business logic
@@ -25,6 +28,7 @@ notebook/
 │   ├── tmp/                        # Temporary files and caches
 │   ├── vendor/                     # Third-party code not managed by bundler
 │   ├── .dockerignore               # Docker ignore rules
+│   ├── .env                        # Environment variables
 │   ├── .gitattributes              # Git attributes for merge and diff
 │   ├── .gitignore                  # Git ignored files list
 │   ├── .rspec                      # RSpec configuration

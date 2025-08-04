@@ -3,17 +3,19 @@
 import { useEffect, useState } from "react";
 
 export function useAuth() {
-  const [authenticated, setAuthenticated] = useState<boolean>(() => {
-    return !!localStorage.getItem("token");
-  });
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleStorageChange = () => {
+    if (typeof window !== "undefined") {
       setAuthenticated(!!localStorage.getItem("token"));
-    };
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+      const handleStorageChange = () => {
+        setAuthenticated(!!localStorage.getItem("token"));
+      };
+
+      window.addEventListener("storage", handleStorageChange);
+      return () => window.removeEventListener("storage", handleStorageChange);
+    }
   }, []);
 
   return { authenticated };

@@ -27,7 +27,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
 import type { Note } from "@/types/db";
 import { useUser } from "@/hooks/useUser";
 import { useNotes } from "@/hooks/useNotes";
@@ -41,9 +40,7 @@ export default function Notebook() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [newTag, setNewTag] = useState("");
 
-  const selectedNote =
-    notes.find((note) => note.id === selectedNoteId) ?? notes[0];
-
+  const selectedNote = notes.find((note) => note.id === selectedNoteId) || null;
 
   const hasInitialized = useRef(false);
   useEffect(() => {
@@ -139,40 +136,8 @@ export default function Notebook() {
           <div className="flex-1 p-4">
             {userLoading || notesLoading ? (
               <div className="text-muted-foreground">Loading note...</div>
-            ) : selectedNoteId === null ? (
-              // Grid preview before selection
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {notes.map((note) => (
-                  <button
-                    key={note.id}
-                    onClick={() => setSelectedNoteId(note.id)}
-                    className="rounded-md border p-4 text-left hover:bg-muted/50 transition"
-                  >
-                    <h3 className="text-lg font-semibold mb-1 truncate">{note.title || "Untitled"}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-3">
-                      {note.content?.slice(0, 200) || "No content..."}
-                    </p>
-                    {note.tags && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {note.tags
-                          .split(",")
-                          .map((tag) => tag.trim())
-                          .filter(Boolean)
-                          .map((tag) => (
-                            <span
-                              key={tag}
-                              className="bg-muted text-muted-foreground text-[10px] px-2 py-0.5 rounded-full"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-            ) : (
-
+            ) : selectedNoteId !== null && selectedNote ? (
+              // ✅ Show Note Editor
               <div className="flex flex-col h-full space-y-4">
                 <div className="flex gap-2 mb-2">
                   <Button
@@ -186,11 +151,7 @@ export default function Notebook() {
 
                   <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
                     <DialogTrigger asChild>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        className="self-start text-sm"
-                      >
+                      <Button variant="destructive" size="sm" className="self-start text-sm">
                         Delete
                       </Button>
                     </DialogTrigger>
@@ -224,32 +185,29 @@ export default function Notebook() {
                   <div className="flex flex-col gap-1">
                     <input
                       type="text"
-                      value={selectedNote.title}
+                      value={selectedNote?.title ?? ""}
                       onChange={(e) =>
                         setNotes((prev) =>
                           prev.map((note) =>
-                            note.id === selectedNote.id
-                              ? { ...note, title: e.target.value }
-                              : note
+                            note.id === selectedNote.id ? { ...note, title: e.target.value } : note
                           )
                         )
                       }
                       className="text-2xl font-bold outline-none border-none bg-transparent"
                     />
                     <div className="flex flex-wrap gap-1">
-                      {selectedNote.tags &&
-                        selectedNote.tags
-                          .split(",")
-                          .map((tag) => tag.trim())
-                          .filter(Boolean)
-                          .map((tag) => (
-                            <span
-                              key={tag}
-                              className="bg-muted text-muted-foreground text-xs px-2 py-0.5 rounded-full"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                      {selectedNote?.tags
+                        ?.split(",")
+                        .map((tag) => tag.trim())
+                        .filter(Boolean)
+                        .map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-muted text-muted-foreground text-xs px-2 py-0.5 rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                     </div>
                   </div>
 
@@ -268,18 +226,15 @@ export default function Notebook() {
                   </div>
                 </div>
 
-
                 <textarea
                   ref={textareaRef}
                   dir="ltr"
                   lang="en"
-                  value={selectedNote.content ?? ""}
+                  value={selectedNote?.content ?? ""}
                   onChange={(e) =>
                     setNotes((prev) =>
                       prev.map((note) =>
-                        note.id === selectedNote.id
-                          ? { ...note, content: e.target.value }
-                          : note
+                        note.id === selectedNote.id ? { ...note, content: e.target.value } : note
                       )
                     )
                   }
@@ -288,16 +243,13 @@ export default function Notebook() {
                       e.preventDefault();
                       document.execCommand("undo");
                     }
-                    if (
-                      e.ctrlKey &&
-                      (e.key === "y" || (e.shiftKey && e.key === "z"))
-                    ) {
+                    if (e.ctrlKey && (e.key === "y" || (e.shiftKey && e.key === "z"))) {
                       e.preventDefault();
                       document.execCommand("redo");
                     }
 
                     if (e.key === "Enter") {
-                      const value = selectedNote.content ?? "";
+                      const value = selectedNote?.content ?? "";
                       const lines = value.split("\n");
                       const caretPos = textareaRef.current?.selectionStart ?? 0;
                       const lineIndex = value.substring(0, caretPos).split("\n").length - 1;
@@ -306,10 +258,9 @@ export default function Notebook() {
                       const match = currentLine.match(/^(\s*)([-*+]|\d+\.)\s/);
                       if (match) {
                         e.preventDefault();
-                        const prefix =
-                          match[2].match(/\d+\./) != null
-                            ? `${parseInt(match[2]) + 1}. `
-                            : `${match[2]} `;
+                        const prefix = match[2].match(/\d+\./) != null
+                          ? `${parseInt(match[2]) + 1}. `
+                          : `${match[2]} `;
 
                         const before = value.substring(0, caretPos);
                         const after = value.substring(caretPos);
@@ -317,9 +268,7 @@ export default function Notebook() {
 
                         setNotes((prev) =>
                           prev.map((note) =>
-                            note.id === selectedNote.id
-                              ? { ...note, content: updated }
-                              : note
+                            note.id === selectedNote.id ? { ...note, content: updated } : note
                           )
                         );
 
@@ -341,6 +290,39 @@ export default function Notebook() {
                     textAlign: "left",
                   }}
                 />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {notes.map((note) => (
+                  <button
+                    key={note.id}
+                    onClick={() => setSelectedNoteId(note.id)}
+                    className="rounded-md border p-4 text-left hover:bg-muted/50 transition"
+                  >
+                    <h3 className="text-lg font-semibold mb-1 truncate">
+                      {note.title || "Untitled"}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {note.content?.slice(0, 200) || "No content..."}
+                    </p>
+                    {note.tags && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {note.tags
+                          .split(",")
+                          .map((tag) => tag.trim())
+                          .filter(Boolean)
+                          .map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-muted text-muted-foreground text-[10px] px-2 py-0.5 rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                      </div>
+                    )}
+                  </button>
+                ))}
               </div>
             )}
           </div>

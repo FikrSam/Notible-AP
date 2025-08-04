@@ -45,16 +45,22 @@ export function SignUpForm({
     }
 
     try {
-      await signup({
+      const response = await signup({
         email: form.email,
         username: form.username,
         password: form.password,
-        password_confirmation: form.confirmpassword,
       });
-      router.push("/notebook");
+
+      if (response.status === "success") {
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        router.push("/notebook");
+      } else {
+        setError(response.message || "Failed to sign up.");
+      }
     } catch (err) {
-      setError("Failed to sign up.");
       console.error(err);
+      setError("Unexpected signup error. Check your network and try again.");
     }
   };
 

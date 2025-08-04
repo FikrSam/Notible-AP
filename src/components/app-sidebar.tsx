@@ -88,6 +88,7 @@ export function AppSidebar({ notes, onAddNote, onSelectNote, onLogout, ...props 
       <SidebarContent>
         <NavProjects
           projects={filteredNotes.map((note) => ({
+            id: note.id,
             name: note.title,
             url: "#",
             icon: NotepadText,
